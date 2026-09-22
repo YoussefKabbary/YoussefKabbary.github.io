@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Youssef Kabbary: AI & Computer Vision Engineer">
+<meta property="og:description" content="Real-time detection, tracking and risk-scoring systems, from the model to the API and interface people use.">
+<meta property="og:image" content="https://youssefkabbary.github.io/img/ops-site-cost.png">
+<meta property="og:type" content="website">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Youssef Kabbary</title>
+<meta name="description" content="Youssef Kabbary: AI and computer vision engineer in Alexandria, Egypt. Real-time detection, tracking and risk models, measured before they are claimed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#F4F5F3;
+  --surface:#FFFFFF;
+  --raised:#FAFBFA;
+  --ink:#101715;
+  --ink-2:#3F4B47;
+  --ink-3:#6B7773;
+  --rule:#DCE1DE;
+  --accent:#0A6A71;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#E0EEED;
+  --signal:#A86D00;
+  --signal-soft:#F5EAD3;
+  --limit:#8F3A2B;
+  --limit-soft:#F5E6E1;
+  --good:#1F7A45;
+  --canvas-bg:#E7ECE9;
+  --shadow:0 1px 2px rgba(16,23,21,.05),0 8px 24px rgba(16,23,21,.06);
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0C1211;--surface:#131B19;--raised:#172120;--ink:#E6ECE9;--ink-2:#B3BFBA;--ink-3:#85938E;
+    --rule:#243230;--accent:#4CC4CB;--accent-ink:#06201F;--accent-soft:#11302F;--signal:#F0B43C;--signal-soft:#2D2412;
+    --limit:#EE8C77;--limit-soft:#301A15;--good:#4CC47A;--canvas-bg:#111A18;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0C1211;--surface:#131B19;--raised:#172120;--ink:#E6ECE9;--ink-2:#B3BFBA;--ink-3:#85938E;
+  --rule:#243230;--accent:#4CC4CB;--accent-ink:#06201F;--accent-soft:#11302F;--signal:#F0B43C;--signal-soft:#2D2412;
+  --limit:#EE8C77;--limit-soft:#301A15;--good:#4CC47A;--canvas-bg:#111A18;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,44px)}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.015em}
+p{margin:0}
+img{display:block}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+[id]{scroll-margin-top:84px}
+
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 86%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px}
+.mark{font-family:var(--display);font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.mark i{width:20px;height:20px;border:2px solid var(--accent);border-radius:3px;position:relative;display:inline-block;flex:none}
+.mark i::after{content:"";position:absolute;inset:4px;background:var(--accent);border-radius:1px}
+.bar nav{display:flex;gap:22px;align-items:center;font-size:14px}
+.bar nav a{color:var(--ink-2);text-decoration:none}
+.bar nav a:hover{color:var(--accent)}
+.bar nav a.btn{color:var(--accent-ink)}
+
+.btn{font:500 14px/1 var(--body);padding:12px 16px;border-radius:6px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:border-color .15s,transform .15s}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.sm{padding:9px 13px;font-size:13.5px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,76px) 48px}
+.hero h1{font-size:clamp(46px,7.2vw,88px);line-height:.95;font-weight:700;margin-top:14px}
+.hero .lead{margin-top:22px;font-size:clamp(18px,1.9vw,21px);line-height:1.5;color:var(--ink-2);max-width:40ch}
+.hero .lead b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px;padding-top:22px;border-top:1px solid var(--rule)}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.facts dd{margin:5px 0 0;font-size:14.5px;line-height:1.45;color:var(--ink)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);padding:6px 11px;border:1px solid var(--rule);border-radius:999px;background:var(--surface)}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--good)}
+
+.viewport{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--rule);background:var(--canvas-bg);aspect-ratio:4/3.3;max-width:100%;box-shadow:var(--shadow)}
+.viewport canvas{display:block;width:100%;height:100%}
+.hud{position:absolute;left:10px;right:10px;top:10px;display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:11px;color:var(--ink-2);pointer-events:none}
+.hud span{background:color-mix(in srgb,var(--surface) 85%,transparent);padding:4px 7px;border-radius:3px}
+.caption{font-size:12.5px;color:var(--ink-3);margin-top:10px}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--surface);border:1px solid var(--rule);border-radius:10px;box-shadow:var(--shadow)}
+.metric{padding:24px 22px}
+.metric+.metric{border-inline-start:1px solid var(--rule)}
+.metric .n{font-family:var(--display);font-size:clamp(30px,3.6vw,42px);font-weight:600;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.metric .n small{font-size:.48em;font-weight:500;color:var(--ink-2);margin-inline-start:3px}
+.metric .l{font-size:14px;color:var(--ink-2);margin-top:10px;line-height:1.45}
+.metric .src{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px}
+
+/* sections */
+.section{padding-block:clamp(64px,8vw,104px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.sec-head h2{font-size:clamp(32px,4vw,46px);font-weight:600;line-height:1.05;margin-top:8px}
+.sec-head p{color:var(--ink-2);font-size:15.5px;max-width:52ch}
+
+/* work index */
+.index{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.tile{grid-column:span 2;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tile.wide{grid-column:span 3}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 45%,var(--rule))}
+.tile .thumb{aspect-ratio:16/9;overflow:hidden;background:var(--canvas-bg);border-bottom:1px solid var(--rule)}
+.tile .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+.tile:hover .thumb img{transform:scale(1.03)}
+.tile .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tile h3{font-size:20px;font-weight:600}
+.tile p{font-size:14px;color:var(--ink-2);line-height:1.5}
+.tile .meta{margin-top:auto;padding-top:8px;font-family:var(--mono);font-size:11.5px;color:var(--accent)}
+
+/* case study */
+.case{padding-block:clamp(56px,7vw,88px) 0}
+.case + .case{border-top:1px solid var(--rule);margin-top:clamp(56px,7vw,88px)}
+.case-head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);letter-spacing:.02em}
+.chip.amber{background:var(--signal-soft);color:var(--signal)}
+.case h3{font-size:clamp(34px,4.6vw,54px);font-weight:700;line-height:1;margin-top:14px}
+.case .summary{margin-top:14px;font-size:clamp(17px,1.6vw,19px);color:var(--ink-2);max-width:56ch;line-height:1.55}
+.spec{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:14px;margin:0}
+.spec dt{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);padding-top:3px}
+.spec dd{margin:0;color:var(--ink)}
+.spec a{font-weight:500}
+
+.shot{margin-top:32px;border-radius:10px;overflow:hidden;border:1px solid var(--rule);background:var(--surface);box-shadow:var(--shadow);cursor:zoom-in;padding:0;display:block;width:100%}
+.shot img{width:100%;height:auto}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.gallery.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gallery figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.gallery button{padding:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--canvas-bg);cursor:zoom-in;aspect-ratio:16/10;display:block;width:100%}
+.gallery img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.03)}
+.gallery figcaption,.shot-cap{font-size:13px;color:var(--ink-3);line-height:1.45}
+.shot-cap{margin-top:10px}
+
+.case-body{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:40px}
+.case-body h4{font-size:13px;font-family:var(--mono);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.points{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.points li{padding-inline-start:18px;position:relative;color:var(--ink-2);line-height:1.55}
+.points li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;border:1.5px solid var(--accent);border-radius:1px}
+.points b{color:var(--ink);font-weight:600}
+
+.results{border:1px solid var(--rule);border-radius:8px;background:var(--surface);overflow-x:auto}
+.results table{width:100%;border-collapse:collapse;font-size:14px}
+.results th,.results td{text-align:start;padding:11px 14px;border-top:1px solid var(--rule);vertical-align:top}
+.results tr:first-child th,.results tr:first-child td{border-top:0}
+.results th{font-weight:500;color:var(--ink-2);width:48%}
+.results td{font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:500}
+.results td small{display:block;color:var(--ink-3);font-size:11px;margin-top:3px;font-weight:400}
+.limits{margin-top:14px;padding:14px 16px;border-radius:8px;background:var(--limit-soft);font-size:14px;color:var(--ink-2)}
+.limits h4{color:var(--limit);margin-bottom:6px}
+.limits ul{margin:0;padding-inline-start:18px;display:grid;gap:5px}
+.limits li::marker{color:var(--limit)}
+.stack{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font-size:12.5px;padding:4px 9px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);background:var(--surface)}
+
+/* drone pipeline */
+.pipeline{margin-top:32px;border:1px solid var(--rule);border-radius:10px;background:var(--surface);padding:clamp(18px,3vw,32px);box-shadow:var(--shadow);overflow-x:auto}
+.pipeline svg{display:block;width:100%;min-width:560px;height:auto}
+.pipeline text{font-family:var(--body)}
+
+/* approach */
+.approach{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.approach article{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:24px}
+.approach h3{font-size:21px;font-weight:600}
+.approach p{margin-top:10px;color:var(--ink-2);font-size:15px}
+.approach code{display:block;margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--ink-3);padding-top:12px;border-top:1px dashed var(--rule)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding-block:18px;border-top:1px solid var(--rule)}
+.timeline li:first-child{border-top:0;padding-top:0}
+.timeline .when{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);padding-top:3px}
+.timeline b{font-weight:600;font-size:16.5px}
+.timeline p{color:var(--ink-2);font-size:15px;margin-top:3px}
+.skills{display:grid;gap:18px;margin:0}
+.skills dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.skills dd{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.skills dd span{font-size:13.5px;padding:5px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--rule)}
+
+/* contact */
+.contact{margin-top:clamp(64px,8vw,104px);background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:32px;align-items:center;box-shadow:var(--shadow)}
+.contact h2{font-size:clamp(30px,4vw,46px);font-weight:700;line-height:1.05}
+.contact p{margin-top:14px;color:var(--ink-2);max-width:46ch}
+.channels{display:grid;gap:10px}
+.channel{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:var(--raised);border:1px solid var(--rule);border-radius:8px;flex-wrap:wrap}
+.channel .k{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)}
+.channel .v{font-size:15px;word-break:break-all}
+.channel .v a{text-decoration:none;font-weight:500}
+.channel button{font:500 13px var(--body);background:var(--surface);border:1px solid var(--rule);color:var(--ink);padding:7px 11px;border-radius:5px;cursor:pointer}
+.channel button:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(6,10,9,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:max(20px,env(safe-area-inset-top,0px)) 16px max(20px,env(safe-area-inset-bottom,0px));cursor:zoom-out}
+.lightbox img{max-width:min(1400px,100%);max-height:84vh;width:auto;height:auto;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox p{color:#D8E0DD;font-size:14px;text-align:center;max-width:70ch}
+.lightbox button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));inset-inline-end:16px;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:6px;padding:8px 12px;font:500 14px var(--body);cursor:pointer}
+
+/* language + theme toggles */
+.tools{display:flex;gap:6px;align-items:center}
+.tool{font:600 13px/1 var(--body);min-width:40px;height:36px;padding:0 10px;border-radius:6px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.tool:hover{border-color:var(--accent);color:var(--accent)}
+.tool svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tool .ico-sun{display:none}
+:root[data-mode="dark"] .tool .ico-sun{display:block}
+:root[data-mode="dark"] .tool .ico-moon{display:none}
+#lang-btn .ar-label{font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;font-size:15px}
+.channel .v{direction:ltr;unicode-bidi:isolate;text-align:start}
+
+/* Arabic */
+:root[lang="ar"]{
+  --display:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+:root[lang="ar"] *{letter-spacing:0!important}
+:root[lang="ar"] .eyebrow,:root[lang="ar"] .chip,:root[lang="ar"] .case-body h4,:root[lang="ar"] .facts dt,:root[lang="ar"] .spec dt,:root[lang="ar"] .skills dt,:root[lang="ar"] .channel .k,:root[lang="ar"] .when{font-family:var(--body);text-transform:none;font-size:13px}
+:root[lang="ar"] .hero h1{line-height:1.15}
+:root[lang="ar"] .case h3{line-height:1.2}
+:root[lang="ar"] body{line-height:1.8}
+
+@media (max-width:980px){
+  .index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tile,.tile.wide{grid-column:span 1}
+  .tile.wide:first-child{grid-column:span 2}
+}
+@media (max-width:860px){
+  .hero,.case-head,.case-body,.about,.contact{grid-template-columns:1fr}
+  .approach{grid-template-columns:1fr}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metric:nth-child(3){border-inline-start:0}
+  .metric:nth-child(n+3){border-top:1px solid var(--rule)}
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bar nav a:not(.btn){display:none}
+}
+@media (max-width:560px){
+  .index{grid-template-columns:1fr}
+  .tile.wide:first-child{grid-column:span 1}
+  .bar nav a.btn{display:none}
+  .facts{grid-template-columns:1fr;gap:12px}
+  .gallery,.gallery.two{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:1fr;gap:4px}
+  .metric{padding:18px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top"><i></i>Youssef Kabbary</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">Experience</a>
+      <a class="btn primary sm" href="#contact">Get in touch</a>
+      <div class="tools">
+        <button class="tool" type="button" id="lang-btn" aria-label="عرض الصفحة بالعربية"><span class="ar-label">عربي</span></button>
+        <button class="tool" type="button" id="theme-btn" aria-label="Switch to dark mode">
+          <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="top">
+    <section class="hero">
+      <div>
+        <span class="status">Open to AI / computer vision roles</span>
+        <h1>Youssef Kabbary</h1>
+        <p class="lead"><b>AI &amp; Computer Vision Engineer</b> building real-time detection, tracking and risk-scoring systems, from the model to the API and interface people actually use.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">View selected work</a>
+          <a class="btn" href="https://github.com/YoussefKabbary" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/youssef-kabbary" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Current</dt><dd>R&amp;D Engineer<br>Smart Technology, Alexandria</dd></div>
+          <div><dt>Education</dt><dd>B.Sc. Artificial Intelligence<br>Pharos University, 2025</dd></div>
+          <div><dt>Focus</dt><dd>Real-time CV, tracking,<br>applied ML, FastAPI</dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="viewport" role="img" aria-label="Animated illustration of people being detected, tracked with IDs, and counted as they cross a doorway line">
+          <canvas id="scene"></canvas>
+          <div class="hud" aria-hidden="true"><span id="hud-ids">tracks 0</span><span id="hud-gate">IN 0 · OUT 0</span></div>
+        </div>
+        <p class="caption">What my crowd analytics system does: detect people, keep a persistent ID per person, and count crossings by direction. (Illustration.)</p>
+      </div>
+    </section>
+
+    <div class="metrics" role="list" aria-label="Measured results">
+      <div class="metric" role="listitem"><div class="n">43–72<small>ms</small></div><div class="l">per frame for real-time crowd analytics, down from 95–232 ms</div><div class="src">measured · RTX 3050 laptop</div></div>
+      <div class="metric" role="listitem"><div class="n">28</div><div class="l">defects found and fixed in a line-by-line audit of my own v1</div><div class="src">each one reproduced</div></div>
+      <div class="metric" role="listitem"><div class="n">191k</div><div class="l">real fatal-crash records used to train a road-risk Transformer</div><div class="src">NHTSA FARS</div></div>
+      <div class="metric" role="listitem"><div class="n">254</div><div class="l">automated tests behind a 141-route production API</div><div class="src">43 PostgreSQL tables</div></div>
+    </div>
+
+    <!-- WORK INDEX -->
+    <section class="section" id="work">
+      <div class="sec-head">
+        <div><span class="eyebrow">Selected work</span><h2>Five systems, end to end</h2></div>
+        <p>Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.</p>
+      </div>
+      <div class="index">
+        <a class="tile wide" href="#ops">
+          <div class="thumb"><img src="img/ops-site-cost.png" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">Flagship · full-stack · in daily use</span><h3>Piling Operations Platform</h3><p>An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 254 tests, Arabic RTL.</p><span class="meta">FastAPI · PostgreSQL</span></div>
+        </a>
+        <a class="tile wide" href="#saferoute">
+          <div class="thumb"><img src="img/saferoute-home.png" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">Road safety AI</span><h3>SafeRoute AI</h3><p>Scores road danger from four independent signals and turns it into action for authorities, routing and drivers.</p><span class="meta">PyTorch · Transformers · YOLOv8 · Sentinel-2</span></div>
+        </a>
+        <a class="tile" href="#crowd">
+          <div class="thumb"><img src="img/cm-tracking.jpg" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">Real-time computer vision</span><h3>Crowd Master</h3><p>People counting, doorway entry/exit and zone occupancy for CCTV and RTSP cameras, rebuilt after a full audit.</p><span class="meta">YOLOv8 · ByteTrack · OpenCV · FastAPI</span></div>
+        </a>
+        <a class="tile" href="#aquarium">
+          <div class="thumb"><img src="img/apps-side-by-side.png" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">Embedded + desktop</span><h3>Smart Aquarium</h3><p>Arduino firmware and two desktop apps over USB and Bluetooth.</p><span class="meta">Arduino · Python · Tkinter</span></div>
+        </a>
+        <a class="tile" href="#agli">
+          <div class="thumb" id="agli-thumb"><img src="img/drone-diagram.svg" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">Graduation project · Excellent</span><h3>AgliFly</h3><p>Autonomous surveillance drone with on-board CNN detection.</p><span class="meta">Raspberry Pi · CNN · OpenCV</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- OPS PLATFORM -->
+    <article class="case" id="ops">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Full-stack · construction</span><span class="chip amber">Client work · in daily use</span></div>
+          <h3>Piling Operations Platform</h3>
+          <p class="summary">An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Sole engineer: schema, API, UI, tests</dd>
+          <dt>Stack</dt><dd>FastAPI, PostgreSQL, Python, pytest, RTL web UI</dd>
+          <dt>Code</dt><dd>Private. Screenshots use test data, with project names blurred.</dd>
+        </dl>
+      </div>
+
+      <button class="shot" type="button" data-full="img/ops-site-cost.png" data-cap="Site cost report: labour, equipment, waste and expenses rolled up per site and period, with cost per metre and per pile, and data-quality warnings when something is missing."><img src="img/ops-site-cost.png" alt="Site cost report screen in the Arabic right-to-left interface" loading="lazy"></button>
+      <div class="gallery">
+        <figure><button type="button" data-full="img/ops-receivables.png" data-cap="Receivables and cheques: what clients owe, what's been collected, what remains, and cheques coming due."><img src="img/ops-receivables.png" alt="Receivables and cheques screen" loading="lazy"></button><figcaption>Receivables and cheques</figcaption></figure>
+        <figure><button type="button" data-full="img/ops-hr.png" data-cap="HR and payroll: employees, salary advances and deductions, bonuses and each employee's net pay."><img src="img/ops-hr.png" alt="HR and payroll screen" loading="lazy"></button><figcaption>HR and payroll</figcaption></figure>
+        <figure><button type="button" data-full="img/ops-inventory.png" data-cap="Inventory: items, storage locations, stock movements and reorder levels, with valued stock per item."><img src="img/ops-inventory.png" alt="Inventory and stock-count screen" loading="lazy"></button><figcaption>Inventory and stock movements</figcaption></figure>
+      </div>
+      <div class="gallery two">
+        <figure><button type="button" data-full="img/ops-platform.png" data-cap="Production planning calculator: rig, pile type, soil, diameter and depth give expected, best and worst-case duration and concrete volume, from the company's recorded production rates."><img src="img/ops-platform.png" alt="Production planning calculator, light theme" loading="lazy"></button><figcaption>Production planning from recorded production rates</figcaption></figure>
+        <figure><button type="button" data-full="img/ops-planning-dark.png" data-cap="The same calculator in the dark theme. Light, dark and system themes throughout."><img src="img/ops-planning-dark.png" alt="Production planning calculator, dark theme" loading="lazy"></button><figcaption>Light, dark and system themes</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What I built</h4>
+          <ul class="points">
+            <li><b>Site records:</b> piling and concrete-pour logs, overbreak tracking, and daily production.</li>
+            <li><b>Estimating and planning:</b> a pile quantity and cost estimator, plus duration and concrete forecasts from real production rates.</li>
+            <li><b>Operations:</b> HR and attendance, equipment and inventory, global search, and a full audit trail.</li>
+            <li><b>Tests written around the real risks:</b> one account can never read another's rows, login hardening, request limits, a cold start on an empty database, and pinned estimator arithmetic.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Scale</h4>
+          <div class="results">
+            <table>
+              <tr><th>API routes</th><td>141</td></tr>
+              <tr><th>PostgreSQL tables</th><td>43</td></tr>
+              <tr><th>Schema migrations</th><td>28</td></tr>
+              <tr><th>Automated tests</th><td>254</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SAFEROUTE -->
+    <article class="case" id="saferoute">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Road safety · Egypt</span><span class="chip amber">Active development</span></div>
+          <h3>SafeRoute AI</h3>
+          <p class="summary">A road-risk API for Egyptian and Saudi highways. It scores how dangerous a stretch of road is, then turns that score into something people can act on: a costed site report for the road authority, a safer route for the trip, and a spoken curve warning for the driver.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Sole engineer: data, models, API, UI</dd>
+          <dt>Stack</dt><dd>PyTorch, Transformers, YOLOv8, FastAPI, OSM, Sentinel-2, SRTM</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/SafeRoute-AI" target="_blank" rel="noopener">github.com/YoussefKabbary/SafeRoute-AI ↗</a></dd>
+        </dl>
+      </div>
+
+      <button class="shot" type="button" data-full="img/saferoute-home.png" data-cap="SafeRoute AI dashboard: English/Arabic, one HTML file served by the API, with live model status."><img src="img/saferoute-home.png" alt="SafeRoute AI dashboard with road inspection form and model status" loading="lazy"></button>
+      <div class="gallery">
+        <figure><button type="button" data-full="img/road-measured.png" data-cap="Road geometry measured from OpenStreetMap and SRTM elevation: curve radius, grade, sight distance, with a confidence value."><img src="img/road-measured.png" alt="Measured road geometry panel" loading="lazy"></button><figcaption>Geometry measured from OpenStreetMap + SRTM</figcaption></figure>
+        <figure><button type="button" data-full="img/analysis-result.png" data-cap="Analysis result: names every model that ran and every one that didn't, with Sentinel-2 imagery of the same road a year apart."><img src="img/analysis-result.png" alt="Analysis result with model breakdown and Sentinel-2 crops" loading="lazy"></button><figcaption>Result names which models actually ran</figcaption></figure>
+        <figure><button type="button" data-full="img/api-docs.png" data-cap="Every route documented as an OpenAPI schema at /docs."><img src="img/api-docs.png" alt="Interactive OpenAPI documentation" loading="lazy"></button><figcaption>Full OpenAPI reference</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What I built</h4>
+          <ul class="points">
+            <li><b>Four independent risk signals:</b> AASHTO geometry physics, a Transformer crash predictor, Sentinel-2 hazards (flooding, sand, roadside canals) compared against the same road a year earlier, and YOLOv8 pavement defects.</li>
+            <li><b>Site reports for road authorities:</b> an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from "this week" to "budgeted works".</li>
+            <li><b>Safer routing:</b> a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.</li>
+            <li><b>Driver warnings designed against alarm fatigue:</b> the app stays silent unless the warning changes what the driver should do. All of Cairo comes down to 13 warnings from 1,055 measured segments, in a 5 kB pack that works offline.</li>
+            <li><b>No fake confidence:</b> a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Results</h4>
+          <div class="results">
+            <table>
+              <tr><th>Crash predictor, 47 held-out locations</th><td>AUC 0.628<small>logistic regression 0.606 · gradient boosting 0.624</small></td></tr>
+              <tr><th>Cairo Ring Road segmentation</th><td>635 segments in ~11 s<small>381 OSM ways · 189 km</small></td></tr>
+              <tr><th>Safer vs fastest route, Ring Road</th><td>6.61 vs 7.21 risk-km<small>25.0 vs 26.2 km · +24 s travel time</small></td></tr>
+              <tr><th>Sites above action threshold</th><td>22 sites<small>signs + limit fixes for all: EGP 434k–1,074k</small></td></tr>
+            </table>
+          </div>
+          <div class="limits">
+            <h4>Known limits &amp; next step</h4>
+            <ul>
+              <li>The risk model is trained on US crash data. Egyptian crash locations are next, to validate it locally.</li>
+              <li>The pavement detector is at mAP50 0.136 and needs retraining on Egyptian imagery.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CROWD MASTER -->
+    <article class="case" id="crowd">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Real-time computer vision</span><span class="chip amber">v3 in progress</span></div>
+          <h3>Crowd Master</h3>
+          <p class="summary">Real-time crowd analytics for CCTV, webcams, RTSP cameras and phones: people counting, doorway entry/exit, zone occupancy, heatmaps and anomaly clips. v2 is my rebuild of v1 after I audited it line by line.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Sole engineer: pipeline, tracking, API, audit</dd>
+          <dt>Stack</dt><dd>YOLOv8 (detect + pose), ByteTrack, PyTorch, OpenCV, ONNX, FastAPI</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/Crowd-Intelligence-System" target="_blank" rel="noopener">github.com/YoussefKabbary/Crowd-Intelligence-System ↗</a></dd>
+        </dl>
+      </div>
+
+      <button class="shot" type="button" data-full="img/crowd-master.gif" data-cap="One unbroken run on real footage: detection, gate counting, zones, heatmap, zoom and enhancement."><img src="img/crowd-master.gif" alt="Crowd Master running on real footage with detection boxes, gate counting and heatmap" loading="lazy"></button>
+      <div class="gallery">
+        <figure><button type="button" data-full="img/cm-tracking.jpg" data-cap="Tracking with persistent IDs and confidence, fused head points, a live panel with flow, forecast and system state."><img src="img/cm-tracking.jpg" alt="Tracking view with IDs and live stats panel" loading="lazy"></button><figcaption>Persistent IDs, head points, live panel</figcaption></figure>
+        <figure><button type="button" data-full="img/cm-gate.jpg" data-cap="Gate counting: draw a line on the video and crossings are tallied by direction."><img src="img/cm-gate.jpg" alt="Gate counting line with directional counts" loading="lazy"></button><figcaption>Direction-aware gate counting</figcaption></figure>
+        <figure><button type="button" data-full="img/cm-v1-v2.jpg" data-cap="v1 settings (left) and v2 settings (right) on the same frames. Both run the same fixed code; only the model and inference resolution differ."><img src="img/cm-v1-v2.jpg" alt="Side by side comparison of v1 and v2 settings" loading="lazy"></button><figcaption>v1 vs v2 settings, same frames</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What I built</h4>
+          <ul class="points">
+            <li><b>Counting that survives occlusion:</b> YOLOv8 body detections fused with pose-derived head points, tracked with ByteTrack in a multi-threaded pipeline.</li>
+            <li><b>Operational outputs:</b> per-zone peak and average occupancy, anomaly detection (density surges, running, rapid evacuation) with saved clips, 5 s–5 min occupancy forecasts, and a PDF/CSV session report.</li>
+            <li><b>The audit:</b> 28 documented defects, several of them silent. Sliced inference threw away every track ID, which quietly disabled door counting. The panic detector was fed a constant image, so it could never fire.</li>
+            <li><b>v3 watchlist layer:</b> face, re-ID and gait matching that first checks whether the camera's pixels can support each method. It won't ship until its false-accept rate is measured.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Results</h4>
+          <div class="results">
+            <table>
+              <tr><th>Latency per frame</th><td>43–72 ms<small>v1: 95–232 ms · RTX 3050 laptop</small></td></tr>
+              <tr><th>Throughput at 960×540, FP16</th><td>~20 detections / s</td></tr>
+              <tr><th>First useful frame</th><td>0.6 s<small>v1: 10.4 s</small></td></tr>
+              <tr><th>Defects documented and fixed</th><td>28<small>each with reproduction steps</small></td></tr>
+            </table>
+          </div>
+          <div class="limits">
+            <h4>Known limits &amp; next step</h4>
+            <ul>
+              <li>All published figures are speed figures. Accuracy against hand-counted footage is next, and the harness for it is already built.</li>
+              <li>Gate counting is reliable for single-file crossings, not for dense two-way flow.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SMART AQUARIUM -->
+    <article class="case" id="aquarium">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Embedded + desktop</span></div>
+          <h3>Smart Aquarium</h3>
+          <p class="summary">Automated aquarium maintenance on an Arduino Nano: turbidity sensing, a motorised cleaning net and a servo feeder. Two Python desktop apps drive it over USB serial and HC-05 Bluetooth at the same time, using one protocol.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Firmware, wiring, protocol, both apps</dd>
+          <dt>Stack</dt><dd>Arduino C++, L298N, HC-05, Python, Tkinter</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/Smart-Aquarium" target="_blank" rel="noopener">github.com/YoussefKabbary/Smart-Aquarium ↗</a></dd>
+        </dl>
+      </div>
+
+      <button class="shot" type="button" data-full="img/apps-side-by-side.png" data-cap="Same firmware, same commands, two front ends: the standard control panel and the animated kids edition."><img src="img/apps-side-by-side.png" alt="Standard control panel and kids edition side by side" loading="lazy"></button>
+      <div class="gallery two">
+        <figure><button type="button" data-full="img/architecture.png" data-cap="System architecture: sensors and actuators on the Arduino Nano, the one-character protocol, and both desktop apps."><img src="img/architecture.png" alt="Architecture diagram of hardware, firmware and desktop apps" loading="lazy"></button><figcaption>Hardware, firmware and protocol</figcaption></figure>
+        <figure><button type="button" data-full="img/app-kids.png" data-cap="Kids edition: an animated tank where the fish react to live water quality from the turbidity sensor."><img src="img/app-kids.png" alt="Kids edition with animated fish tank" loading="lazy"></button><figcaption>Kids edition: fish react to live water quality</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What I built</h4>
+          <ul class="points">
+            <li><b>Firmware (313 lines):</b> reads turbidity and maps it to a band, drives the net motor until the limit switch, feeds on demand or on a cycle, and broadcasts a status line every 1.5 s.</li>
+            <li><b>Two links at once:</b> USB and Bluetooth answer the same one-character commands (<code>E C S F A N</code>) at the same time.</li>
+            <li><b>The board is the source of truth:</b> the apps never assume a command worked. They render whatever the board reports.</li>
+            <li><b>Two audiences:</b> a dense standard panel, and a kids edition where the tank animation follows the real sensor.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hardware</h4>
+          <div class="results">
+            <table>
+              <tr><th>Turbidity sensor</th><td>A0<small>dirty 0–249 · cloudy 250–449 · clear 450–600</small></td></tr>
+              <tr><th>Net motor via L298N</th><td>D3 / D5 / D6<small>limit switch on D4</small></td></tr>
+              <tr><th>Servo feeder</th><td>D9</td></tr>
+              <tr><th>HC-05 Bluetooth</th><td>D10 / D11</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- AGLIFLY -->
+    <article class="case" id="agli">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Graduation project</span><span class="chip amber">Graded Excellent</span></div>
+          <h3>AgliFly</h3>
+          <p class="summary">An autonomous surveillance drone that runs CNN object detection on board a Raspberry Pi. Detection happens in the air, not on a ground station.</p>
+        </div>
+        <dl class="spec">
+          <dt>Where</dt><dd>Pharos University in Alexandria, B.Sc. AI, 2025</dd>
+          <dt>Stack</dt><dd>Python, CNN, OpenCV, Raspberry Pi</dd>
+        </dl>
+      </div>
+      <div class="pipeline" id="agli-media">
+        <svg viewBox="0 0 900 220" role="img" aria-label="AgliFly pipeline: on-board camera feeds a CNN running on a Raspberry Pi, which produces detections in flight">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+          <g fill="none" stroke="var(--rule)" stroke-width="1.5">
+            <rect x="10" y="50" width="220" height="120" rx="10" fill="var(--raised)"/>
+            <rect x="340" y="30" width="240" height="160" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+            <rect x="690" y="50" width="200" height="120" rx="10" fill="var(--raised)"/>
+          </g>
+          <g stroke="var(--accent)" stroke-width="2" fill="none" marker-end="url(#arr)">
+            <line x1="236" y1="110" x2="332" y2="110"/>
+            <line x1="586" y1="110" x2="682" y2="110"/>
+          </g>
+          <text x="120" y="98" text-anchor="middle" fill="var(--ink)" font-size="19" font-weight="600">Camera</text>
+          <text x="120" y="124" text-anchor="middle" fill="var(--ink-3)" font-size="14">on the airframe</text>
+          <text x="460" y="88" text-anchor="middle" fill="var(--ink)" font-size="19" font-weight="600">Raspberry Pi</text>
+          <text x="460" y="116" text-anchor="middle" fill="var(--accent)" font-size="15" font-family="JetBrains Mono, monospace">CNN object detection</text>
+          <text x="460" y="142" text-anchor="middle" fill="var(--ink-3)" font-size="14">runs on board, in flight</text>
+          <text x="790" y="98" text-anchor="middle" fill="var(--ink)" font-size="19" font-weight="600">Detections</text>
+          <text x="790" y="124" text-anchor="middle" fill="var(--ink-3)" font-size="14">surveillance output</text>
+        </svg>
+      </div>
+    </article>
+
+    <!-- APPROACH -->
+    <section class="section" id="approach">
+      <div class="sec-head">
+        <div><span class="eyebrow">Approach</span><h2>How I work</h2></div>
+        <p>The same rules run through every project above. They're why each result on this page comes with its source.</p>
+      </div>
+      <div class="approach">
+        <article>
+          <h3>Measure, then claim</h3>
+          <p>A figure without named hardware or a held-out test set isn't a result. I publish speed as speed, and I say plainly when accuracy hasn't been measured yet.</p>
+          <code>43–72 ms/frame · RTX 3050 · 960×540 FP16</code>
+        </article>
+        <article>
+          <h3>Audit my own work</h3>
+          <p>I reviewed my own shipped v1 line by line, documented 28 defects with reproductions, and publicly corrected figures I had reported earlier.</p>
+          <code>AUDIT.md → 28 findings, all reproduced</code>
+        </article>
+        <article>
+          <h3>Fail visibly, not quietly</h3>
+          <p>When a component can't run, the system says so instead of guessing. A silent result should only ever mean there's nothing to report.</p>
+          <code>"models_used": ["geometry", "predictor"]</code>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="about">
+        <div>
+          <div class="sec-head"><div><span class="eyebrow">Experience</span><h2>Path so far</h2></div></div>
+          <ol class="timeline">
+            <li><span class="when">Now</span><div><b>R&amp;D Engineer, Smart Technology</b><p>Alexandria. Real-time computer vision and applied AI systems.</p></div></li>
+            <li><span class="when">2025</span><div><b>B.Sc. Artificial Intelligence, Pharos University in Alexandria</b><p>Graduation project AgliFly (on-board CNN surveillance drone) graded Excellent.</p></div></li>
+            <li><span class="when">University</span><div><b>Google Developer Student Clubs</b><p>Robotics and AI tracks.</p></div></li>
+          </ol>
+        </div>
+        <div>
+          <div class="sec-head"><div><span class="eyebrow">Toolkit</span><h2>Skills</h2></div></div>
+          <dl class="skills">
+            <div><dt>Computer vision &amp; deep learning</dt><dd><span>PyTorch</span><span>YOLOv8</span><span>OpenCV</span><span>Transformers</span><span>ByteTrack</span><span>scikit-learn</span><span>TensorFlow</span></dd></div>
+            <div><dt>Deployment &amp; backend</dt><dd><span>FastAPI</span><span>PostgreSQL</span><span>ONNX</span><span>CUDA / FP16</span><span>REST APIs</span><span>pytest</span></dd></div>
+            <div><dt>Geospatial</dt><dd><span>OpenStreetMap</span><span>Sentinel-2</span><span>SRTM</span><span>Graph routing</span></dd></div>
+            <div><dt>Embedded</dt><dd><span>Raspberry Pi</span><span>Arduino</span><span>ESP32</span><span>STM32</span></dd></div>
+            <div><dt>Languages</dt><dd><span>Python</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>Arabic · English</span></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2 style="margin-top:10px">Let's build something that works on real footage.</h2>
+        <p>I'm open to AI and computer vision roles, especially work that takes a model all the way to the people who use it.</p>
+      </div>
+      <div class="channels">
+        <div class="channel"><div><div class="k">Email</div><div class="v" id="email">youssefkabbary1152003@gmail.com</div></div><button type="button" id="copy-email" data-copy="email">Copy</button></div>
+        <div class="channel"><div><div class="k">Phone / WhatsApp</div><div class="v" id="phone">+20 110 447 9279</div></div><button type="button" data-copy="phone">Copy</button></div>
+        <div class="channel"><div><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/youssef-kabbary" target="_blank" rel="noopener">linkedin.com/in/youssef-kabbary ↗</a></div></div></div>
+        <div class="channel"><div><div class="k">GitHub</div><div class="v"><a href="https://github.com/YoussefKabbary" target="_blank" rel="noopener">github.com/YoussefKabbary ↗</a></div></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>© 2026 Youssef Kabbary · Alexandria, Egypt</span><a href="#top">Back to top ↑</a></footer>
+</div>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" id="lb-close">Close ✕</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</div>
+
+<script>
+(function(){
+  // copy email
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    var v=document.getElementById(btn.dataset.copy);
+    btn.addEventListener('click',function(){
+      var done=function(){btn.textContent=window.__t?__t('Copied'):'Copied';setTimeout(function(){btn.textContent=window.__t?__t('Copy'):'Copy'},1600)};
+      var sel=function(){var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent=window.__t?__t('Selected'):'Selected';};
+      try{navigator.clipboard.writeText(v.textContent).then(done,sel)}catch(e){sel()}
+    });
+  });
+
+  // lightbox
+  var lb=document.getElementById('lightbox'),li=document.getElementById('lb-img'),lc=document.getElementById('lb-cap'),last=null;
+  document.querySelectorAll('[data-full]').forEach(function(b){
+    b.addEventListener('click',function(){last=b;li.src=b.dataset.full;li.alt=b.querySelector('img').alt;lc.textContent=b.dataset.cap||'';lb.hidden=false;document.getElementById('lb-close').focus()});
+  });
+  function close(){lb.hidden=true;li.src='';if(last)last.focus()}
+  lb.addEventListener('click',close);
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close()});
+
+  // tracking illustration
+  var c=document.getElementById('scene'),ctx=c.getContext('2d');
+  var hudIds=document.getElementById('hud-ids'),hudGate=document.getElementById('hud-gate');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W,H,dpr,people=[],nextId=11,cin=0,cout=0,gateY,running=true;
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function size(){dpr=Math.min(devicePixelRatio||1,2);var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);gateY=H*0.56}
+  function spawn(pre){
+    var down=Math.random()<.55;
+    var p={id:nextId++,x:W*(.12+Math.random()*.76),y:down?-30:H+30,vx:(Math.random()-.5)*.25,vy:(down?1:-1)*(.35+Math.random()*.35),s:.8+Math.random()*.4,conf:(.78+Math.random()*.2).toFixed(2),trail:[]};
+    if(pre)p.y=Math.random()*H;
+    p.side=p.y<gateY?-1:1;people.push(p);
+  }
+  function step(){
+    people.forEach(function(p){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<W*.08||p.x>W*.92)p.vx*=-1;
+      p.trail.push([p.x,p.y]);if(p.trail.length>40)p.trail.shift();
+      var side=p.y<gateY?-1:1;
+      if(side!==p.side&&p.x>W*.2&&p.x<W*.8){if(side>0)cin++;else cout++;p.flash=18}
+      p.side=side;if(p.flash)p.flash--;
+    });
+    people=people.filter(function(p){return p.y>-60&&p.y<H+60});
+    while(people.length<7)spawn(false);
+  }
+  function draw(){
+    var ink=css('--ink'),acc=css('--accent'),sig=css('--signal'),ink3=css('--ink-3'),gr=css('--ground');
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle=ink3;ctx.globalAlpha=.16;ctx.lineWidth=1;
+    for(var i=1;i<8;i++){var y=H*i/8;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke()}
+    for(var j=1;j<10;j++){var x=W*j/10;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke()}
+    ctx.globalAlpha=1;
+    ctx.strokeStyle=sig;ctx.lineWidth=2.5;ctx.setLineDash([10,7]);
+    ctx.beginPath();ctx.moveTo(W*.2,gateY);ctx.lineTo(W*.8,gateY);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=sig;ctx.font='500 11px "JetBrains Mono", monospace';ctx.fillText('GATE A',W*.2,gateY-7);
+    people.forEach(function(p){
+      ctx.strokeStyle=acc;ctx.globalAlpha=.35;ctx.lineWidth=1.5;ctx.beginPath();
+      p.trail.forEach(function(t,k){k?ctx.lineTo(t[0],t[1]):ctx.moveTo(t[0],t[1])});ctx.stroke();ctx.globalAlpha=1;
+      var bw=26*p.s,bh=58*p.s,bx=p.x-bw/2,by=p.y-bh/2;
+      ctx.fillStyle=ink;ctx.globalAlpha=.5;
+      ctx.beginPath();ctx.arc(p.x,by+9*p.s,6*p.s,0,7);ctx.fill();
+      ctx.beginPath();if(ctx.roundRect)ctx.roundRect(p.x-8*p.s,by+17*p.s,16*p.s,36*p.s,6*p.s);else ctx.rect(p.x-8*p.s,by+17*p.s,16*p.s,36*p.s);ctx.fill();
+      ctx.globalAlpha=1;
+      ctx.fillStyle=sig;ctx.beginPath();ctx.arc(p.x,by+9*p.s,2.2,0,7);ctx.fill();
+      ctx.strokeStyle=p.flash?sig:acc;ctx.lineWidth=p.flash?2.5:1.6;ctx.strokeRect(bx,by,bw,bh);
+      var label='id '+p.id+' · '+p.conf;ctx.font='500 10px "JetBrains Mono", monospace';
+      var tw=ctx.measureText(label).width+8;ctx.fillStyle=p.flash?sig:acc;ctx.fillRect(bx,by-14,tw,14);
+      ctx.fillStyle=gr;ctx.fillText(label,bx+4,by-3.5);
+    });
+    hudIds.textContent='tracks '+people.length+' · yolov8 + bytetrack';
+    hudGate.textContent='IN '+cin+' · OUT '+cout;
+  }
+  function loop(){if(running){step();draw()}requestAnimationFrame(loop)}
+  size();for(var k=0;k<7;k++)spawn(true);
+  addEventListener('resize',function(){size();draw()});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){running=e[0].isIntersecting}).observe(c)}
+  if(reduce){for(var n=0;n<120;n++)step();draw()}else loop();
+})();
+</script>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function read(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  var lang='en';
+
+  var AR=[
+["Youssef Kabbary","يوسف قبّاري"],["Work","الأعمال"],["Approach","المنهج"],["Experience","الخبرة"],["Get in touch","تواصل معي"],
+["Open to AI / computer vision roles","متاح لوظائف الذكاء الاصطناعي والرؤية الحاسوبية"],
+["AI & Computer Vision Engineer building real-time detection, tracking and risk-scoring systems, from the model to the API and interface people actually use.","<b>مهندس ذكاء اصطناعي ورؤية حاسوبية</b> أبني أنظمة كشف وتتبّع وتقييم مخاطر تعمل في الوقت الحقيقي، من النموذج حتى الـ API والواجهة التي يستخدمها الناس فعلاً."],
+["View selected work","شاهد أبرز الأعمال"],
+["Current","حالياً"],["R&D Engineer Smart Technology, Alexandria","مهندس بحث وتطوير<br>Smart Technology، الإسكندرية"],
+["Education","التعليم"],["B.Sc. Artificial Intelligence Pharos University, 2025","بكالوريوس الذكاء الاصطناعي<br>جامعة فاروس، 2025"],
+["Focus","التخصص"],["Real-time CV, tracking, applied ML, FastAPI","رؤية حاسوبية لحظية، تتبّع،<br>تعلّم آلي تطبيقي، FastAPI"],
+["What my crowd analytics system does: detect people, keep a persistent ID per person, and count crossings by direction. (Illustration.)","ما يفعله نظام تحليل الحشود: يكتشف الأشخاص، ويحتفظ بمعرّف ثابت لكل شخص، ويعدّ مرات العبور حسب الاتجاه. (رسم توضيحي)"],
+["per frame for real-time crowd analytics, down from 95–232 ms","لكل إطار في تحليل الحشود اللحظي، بعد أن كانت 95–232 ms"],
+["measured · RTX 3050 laptop","مقاس · لابتوب RTX 3050"],
+["defects found and fixed in a line-by-line audit of my own v1","عيباً اكتشفتها وأصلحتها في مراجعة سطراً بسطر لنسختي الأولى"],
+["each one reproduced","كل عيب أُعيد إنتاجه وتوثيقه"],
+["real fatal-crash records used to train a road-risk Transformer","سجل حقيقي لحوادث مميتة لتدريب نموذج Transformer لتقييم خطورة الطرق"],
+["automated tests behind a 141-route production API","اختباراً آلياً خلف API إنتاجي من 141 مساراً"],
+["43 PostgreSQL tables","43 جدول PostgreSQL"],
+["Selected work","أبرز الأعمال"],["Five systems, end to end","خمسة أنظمة، من الفكرة حتى التشغيل"],
+["Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.","رؤية حاسوبية، وتعلّم آلي على بيانات جغرافية، وأنظمة Backend إنتاجية، وعتاد مدمج. كل رقم مذكور معه ما قيس عليه."],
+["Flagship · full-stack · in daily use","المشروع الرئيسي · Full-stack · مستخدم يومياً"],
+["Piling Operations Platform","منصة تشغيل شركة خوازيق"],
+["An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 254 tests, Arabic RTL.","نظام تشغيل لشركة مقاولات خوازيق: سجلات المواقع، والتسعير، والتخطيط، والموارد البشرية، والمالية. 141 مسار API، و43 جدولاً، و254 اختباراً، بواجهة عربية."],
+["Road safety AI","ذكاء اصطناعي للسلامة على الطرق"],
+["Scores road danger from four independent signals and turns it into action for authorities, routing and drivers.","يقيّم خطورة الطرق من أربع إشارات مستقلة ويحوّلها إلى إجراءات لجهات الطرق والتوجيه والسائقين."],
+["Real-time computer vision","رؤية حاسوبية لحظية"],
+["People counting, doorway entry/exit and zone occupancy for CCTV and RTSP cameras, rebuilt after a full audit.","عدّ الأشخاص، والدخول والخروج من الأبواب، وإشغال المناطق لكاميرات المراقبة و RTSP، أُعيد بناؤه بعد مراجعة كاملة."],
+["Embedded + desktop","أنظمة مدمجة + تطبيقات سطح المكتب"],["Smart Aquarium","الحوض الذكي"],
+["Arduino firmware and two desktop apps over USB and Bluetooth.","برنامج Arduino وتطبيقان لسطح المكتب عبر USB و Bluetooth."],
+["Graduation project · Excellent","مشروع التخرج · امتياز"],
+["Autonomous surveillance drone with on-board CNN detection.","طائرة مسيّرة ذاتية للمراقبة تكتشف الأجسام بشبكة CNN على متنها."],
+["Full-stack · construction","Full-stack · مقاولات"],["Client work · in daily use","مشروع لعميل · مستخدم يومياً"],
+["An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.","نظام تشغيل داخلي بنيته بالكامل لشركة مقاولات خوازيق وأساسات. يغطي سجلات المواقع، وتقدير التكلفة، وتخطيط الإنتاج، والموارد البشرية، وسجل تدقيق كامل، بواجهة عربية مصممة للاستخدام في الموقع."],
+["Role","الدور"],["Stack","التقنيات"],["Code","الكود"],["Where","المكان"],
+["Sole engineer: schema, API, UI, tests","المهندس الوحيد: قاعدة البيانات، والـ API، والواجهة، والاختبارات"],
+["Private. Screenshots use test data, with project names blurred.","خاص. الصور ببيانات تجريبية، مع إخفاء أسماء المشاريع."],
+["Production planning from recorded production rates","تخطيط الإنتاج من معدلات الإنتاج المسجلة"],
+["Light, dark and system themes","وضع فاتح وغامق وتلقائي"],
+["What I built","ما بنيته"],["Results","النتائج"],["Scale","الحجم"],["Hardware","العتاد"],
+["Site records: piling and concrete-pour logs, overbreak tracking, and daily production.","<b>سجلات المواقع:</b> سجلات الخوازيق وصب الخرسانة، ومتابعة الـ Overbreak، والإنتاج اليومي."],
+["Estimating and planning: a pile quantity and cost estimator, plus duration and concrete forecasts from real production rates.","<b>التسعير والتخطيط:</b> حاسبة كميات وتكلفة الخوازيق، وتوقعات المدة والخرسانة من معدلات الإنتاج الفعلية."],
+["Operations: HR and attendance, equipment and inventory, global search, and a full audit trail.","<b>التشغيل:</b> الموارد البشرية والحضور، والمعدات والمخزن، وبحث شامل، وسجل تدقيق كامل."],
+["Tests written around the real risks: one account can never read another's rows, login hardening, request limits, a cold start on an empty database, and pinned estimator arithmetic.","<b>اختبارات مبنية على المخاطر الحقيقية:</b> لا يمكن لحساب أن يقرأ بيانات حساب آخر، وتأمين تسجيل الدخول، وحدود للطلبات، والتشغيل على قاعدة بيانات فارغة، وتثبيت حسابات الحاسبة."],
+["API routes","مسارات API"],["PostgreSQL tables","جداول PostgreSQL"],["Schema migrations","ترحيلات قاعدة البيانات"],["Automated tests","اختبارات آلية"],
+["Road safety · Egypt","السلامة على الطرق · مصر"],["Active development","قيد التطوير"],
+["A road-risk API for Egyptian and Saudi highways. It scores how dangerous a stretch of road is, then turns that score into something people can act on: a costed site report for the road authority, a safer route for the trip, and a spoken curve warning for the driver.","API لتقييم خطورة الطرق السريعة في مصر والسعودية. يحدد مدى خطورة كل جزء من الطريق، ثم يحوّل ذلك إلى شيء يمكن التصرف بناءً عليه: تقرير موقع بالتكلفة لجهة الطرق، ومسار أكثر أماناً للرحلة، وتحذير صوتي للسائق قبل المنحنيات."],
+["Sole engineer: data, models, API, UI","المهندس الوحيد: البيانات، والنماذج، والـ API، والواجهة"],
+["Geometry measured from OpenStreetMap + SRTM","هندسة الطريق مقاسة من OpenStreetMap و SRTM"],
+["Result names which models actually ran","النتيجة تذكر النماذج التي عملت فعلاً"],["Full OpenAPI reference","توثيق OpenAPI كامل"],
+["Four independent risk signals: AASHTO geometry physics, a Transformer crash predictor, Sentinel-2 hazards (flooding, sand, roadside canals) compared against the same road a year earlier, and YOLOv8 pavement defects.","<b>أربع إشارات خطورة مستقلة:</b> فيزياء هندسة الطريق وفق AASHTO، ونموذج Transformer للتنبؤ بالحوادث، ومخاطر من صور Sentinel-2 (غرق، ورمال، وترع جانبية) مقارنة بنفس الطريق قبل عام، وعيوب الرصف بـ YOLOv8."],
+["Site reports for road authorities: an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from \"this week\" to \"budgeted works\".","<b>تقارير مواقع لجهات الطرق:</b> تقرير A4 بالعربية ومعه الإنجليزية. الحلول مأخوذة من معاملات تعديل الحوادث المنشورة (FHWA و AASHTO HSM)، بتكلفة تقديرية بالجنيه المصري، ومرحلة من «هذا الأسبوع» حتى «أعمال بميزانية»."],
+["Safer routing: a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.","<b>توجيه أكثر أماناً:</b> شبكة طرق من OpenStreetMap مقيّمة بـ«كيلومترات الخطر» على مقاطع 300 متر، توازن بين وقت الرحلة والتعرض للطرق الخطرة."],
+["Driver warnings designed against alarm fatigue: the app stays silent unless the warning changes what the driver should do. All of Cairo comes down to 13 warnings from 1,055 measured segments, in a 5 kB pack that works offline.","<b>تحذيرات للسائق مصممة ضد إرهاق التنبيهات:</b> التطبيق يصمت إلا إذا كان التحذير سيغيّر ما يجب على السائق فعله. القاهرة كلها تتلخص في 13 تحذيراً من 1,055 مقطعاً مقاساً، في حزمة 5 kB تعمل بدون إنترنت."],
+["No fake confidence: a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.","<b>بدون ثقة مزيفة:</b> النموذج الذي لا يستطيع العمل لا يساهم بشيء بدلاً من قيمة 0.5 وهمية، وكل استجابة تذكر النماذج التي عملت."],
+["Crash predictor, 47 held-out locations","التنبؤ بالحوادث، 47 موقعاً لم يرها النموذج"],
+["Cairo Ring Road segmentation","تقسيم الطريق الدائري بالقاهرة"],["635 segments in ~11 s 381 OSM ways · 189 km","635 مقطعاً في ~11 ث<small>381 طريق OSM · 189 كم</small>"],
+["Safer vs fastest route, Ring Road","المسار الأأمن مقابل الأسرع، الطريق الدائري"],["6.61 vs 7.21 risk-km 25.0 vs 26.2 km · +24 s travel time","6.61 مقابل 7.21 كم-خطر<small>25.0 مقابل 26.2 كم · +24 ث في زمن الرحلة</small>"],
+["Sites above action threshold","مواقع تتجاوز حد التدخل"],["22 sites signs + limit fixes for all: EGP 434k–1,074k","22 موقعاً<small>لافتات وتصحيح حدود السرعة لها كلها: 434 ألف – 1.074 مليون جنيه</small>"],
+["Known limits & next step","حدود معروفة والخطوة التالية"],
+["The risk model is trained on US crash data. Egyptian crash locations are next, to validate it locally.","نموذج الخطورة مدرّب على بيانات حوادث أمريكية. الخطوة التالية مواقع حوادث مصرية للتحقق منه محلياً."],
+["The pavement detector is at mAP50 0.136 and needs retraining on Egyptian imagery.","كاشف عيوب الرصف عند mAP50 0.136 ويحتاج إعادة تدريب على صور مصرية."],
+["v3 in progress","v3 قيد التطوير"],
+["Real-time crowd analytics for CCTV, webcams, RTSP cameras and phones: people counting, doorway entry/exit, zone occupancy, heatmaps and anomaly clips. v2 is my rebuild of v1 after I audited it line by line.","تحليل حشود لحظي لكاميرات المراقبة والويب كام و RTSP والموبايل: عدّ الأشخاص، والدخول والخروج من الأبواب، وإشغال المناطق، وخرائط حرارية، ومقاطع للأحداث غير الطبيعية. النسخة الثانية هي إعادة بنائي للأولى بعد مراجعتها سطراً بسطر."],
+["Sole engineer: pipeline, tracking, API, audit","المهندس الوحيد: خط المعالجة، والتتبّع، والـ API، والمراجعة"],
+["Persistent IDs, head points, live panel","معرّفات ثابتة، ونقاط الرأس، ولوحة مباشرة"],["Direction-aware gate counting","عدّ البوابات حسب الاتجاه"],["v1 vs v2 settings, same frames","إعدادات v1 مقابل v2 على نفس الإطارات"],
+["Counting that survives occlusion: YOLOv8 body detections fused with pose-derived head points, tracked with ByteTrack in a multi-threaded pipeline.","<b>عدّ يتحمّل الحجب:</b> اكتشاف الأجسام بـ YOLOv8 مدموج مع نقاط الرأس من نموذج الـ Pose، وتتبّع بـ ByteTrack في خط معالجة متعدد الـ Threads."],
+["Operational outputs: per-zone peak and average occupancy, anomaly detection (density surges, running, rapid evacuation) with saved clips, 5 s–5 min occupancy forecasts, and a PDF/CSV session report.","<b>مخرجات تشغيلية:</b> ذروة ومتوسط الإشغال لكل منطقة، وكشف الأحداث غير الطبيعية (ارتفاع الكثافة، والجري، والإخلاء السريع) مع حفظ المقاطع، وتوقعات إشغال من 5 ثوانٍ إلى 5 دقائق، وتقرير جلسة PDF/CSV."],
+["The audit: 28 documented defects, several of them silent. Sliced inference threw away every track ID, which quietly disabled door counting. The panic detector was fed a constant image, so it could never fire.","<b>المراجعة:</b> 28 عيباً موثقاً، بعضها كان صامتاً. الاستدلال المقسّم كان يحذف كل معرّفات التتبّع فتعطّل عدّ الأبواب دون أن يظهر خطأ، وكاشف الذعر كان يستقبل صورة ثابتة فلم يكن ممكناً أن يعمل أبداً."],
+["v3 watchlist layer: face, re-ID and gait matching that first checks whether the camera's pixels can support each method. It won't ship until its false-accept rate is measured.","<b>طبقة قائمة المراقبة في v3:</b> مطابقة بالوجه وإعادة التعرّف وطريقة المشي، تتحقق أولاً إن كانت دقة الكاميرا تسمح بكل طريقة. لن تُطلق قبل قياس معدل القبول الخاطئ."],
+["Latency per frame","زمن المعالجة لكل إطار"],["43–72 ms v1: 95–232 ms · RTX 3050 laptop","43–72 ms<small>v1: 95–232 ms · لابتوب RTX 3050</small>"],
+["Throughput at 960×540, FP16","المعدل عند 960×540، FP16"],["~20 detections / s","~20 اكتشافاً / ث"],
+["First useful frame","أول إطار مفيد"],["0.6 s v1: 10.4 s","0.6 ث<small>v1: 10.4 ث</small>"],
+["Defects documented and fixed","عيوب موثقة ومُصلحة"],["28 each with reproduction steps","28<small>كل عيب بخطوات إعادة إنتاجه</small>"],
+["All published figures are speed figures. Accuracy against hand-counted footage is next, and the harness for it is already built.","كل الأرقام المنشورة أرقام سرعة. الخطوة التالية قياس الدقة مقابل فيديو معدود يدوياً، وأداة القياس جاهزة بالفعل."],
+["Gate counting is reliable for single-file crossings, not for dense two-way flow.","عدّ البوابات موثوق عند العبور فرداً فرداً، وليس مع التدفق الكثيف في الاتجاهين."],
+["Automated aquarium maintenance on an Arduino Nano: turbidity sensing, a motorised cleaning net and a servo feeder. Two Python desktop apps drive it over USB serial and HC-05 Bluetooth at the same time, using one protocol.","صيانة آلية للحوض على Arduino Nano: قياس العكارة، وشبكة تنظيف بموتور، ومغذٍّ بسيرفو. تطبيقان بـ Python لسطح المكتب يتحكمان فيه عبر USB و Bluetooth HC-05 في نفس الوقت، ببروتوكول واحد."],
+["Firmware, wiring, protocol, both apps","البرنامج الثابت، والتوصيلات، والبروتوكول، والتطبيقان"],
+["Hardware, firmware and protocol","العتاد والبرنامج الثابت والبروتوكول"],["Kids edition: fish react to live water quality","نسخة الأطفال: الأسماك تتفاعل مع جودة المياه لحظياً"],
+["Firmware (313 lines): reads turbidity and maps it to a band, drives the net motor until the limit switch, feeds on demand or on a cycle, and broadcasts a status line every 1.5 s.","<b>البرنامج الثابت (313 سطراً):</b> يقرأ العكارة ويصنّفها، ويشغّل موتور الشبكة حتى مفتاح النهاية، ويطعم عند الطلب أو بشكل دوري، ويرسل سطر حالة كل 1.5 ثانية."],
+["Two links at once: USB and Bluetooth answer the same one-character commands (E C S F A N) at the same time.","<b>اتصالان في وقت واحد:</b> USB و Bluetooth يستجيبان لنفس أوامر الحرف الواحد (<code>E C S F A N</code>) في نفس الوقت."],
+["The board is the source of truth: the apps never assume a command worked. They render whatever the board reports.","<b>اللوحة هي مصدر الحقيقة:</b> التطبيقات لا تفترض أبداً أن الأمر نجح، بل تعرض ما تبلّغ عنه اللوحة."],
+["Two audiences: a dense standard panel, and a kids edition where the tank animation follows the real sensor.","<b>جمهوران:</b> لوحة عادية مليئة بالبيانات، ونسخة للأطفال يتبع فيها الحوض المتحرك قراءة الحساس الحقيقية."],
+["Turbidity sensor","حساس العكارة"],["A0 dirty 0–249 · cloudy 250–449 · clear 450–600","A0<small>متسخ 0–249 · عكر 250–449 · صافٍ 450–600</small>"],
+["Net motor via L298N","موتور الشبكة عبر L298N"],["D3 / D5 / D6 limit switch on D4","D3 / D5 / D6<small>مفتاح النهاية على D4</small>"],["Servo feeder","مغذٍّ بسيرفو"],
+["Graduation project","مشروع التخرج"],["Graded Excellent","تقدير امتياز"],
+["An autonomous surveillance drone that runs CNN object detection on board a Raspberry Pi. Detection happens in the air, not on a ground station.","طائرة مسيّرة ذاتية للمراقبة تشغّل كشف الأجسام بشبكة CNN على Raspberry Pi على متنها. الكشف يحدث في الجو، وليس في محطة أرضية."],
+["Pharos University in Alexandria, B.Sc. AI, 2025","جامعة فاروس بالإسكندرية، بكالوريوس الذكاء الاصطناعي، 2025"],
+["Camera","الكاميرا"],["on the airframe","على هيكل الطائرة"],["CNN object detection","كشف أجسام CNN"],["runs on board, in flight","يعمل على متنها أثناء الطيران"],["Detections","الاكتشافات"],["surveillance output","مخرجات المراقبة"],
+["How I work","طريقة عملي"],
+["The same rules run through every project above. They're why each result on this page comes with its source.","نفس القواعد تسري في كل المشاريع أعلاه، ولهذا كل نتيجة في هذه الصفحة معها مصدرها."],
+["Measure, then claim","أقيس، ثم أعلن"],
+["A figure without named hardware or a held-out test set isn't a result. I publish speed as speed, and I say plainly when accuracy hasn't been measured yet.","الرقم بدون جهاز محدد أو بيانات اختبار منفصلة ليس نتيجة. أنشر السرعة على أنها سرعة، وأقول بوضوح عندما لا تكون الدقة قد قيست بعد."],
+["Audit my own work","أراجع عملي بنفسي"],
+["I reviewed my own shipped v1 line by line, documented 28 defects with reproductions, and publicly corrected figures I had reported earlier.","راجعت نسختي الأولى المنشورة سطراً بسطر، ووثّقت 28 عيباً مع طريقة إعادة إنتاجها، وصححت علناً أرقاماً كنت قد نشرتها من قبل."],
+["Fail visibly, not quietly","فشل واضح، لا صامت"],
+["When a component can't run, the system says so instead of guessing. A silent result should only ever mean there's nothing to report.","عندما لا يستطيع جزء من النظام أن يعمل، يقول ذلك بدلاً من التخمين. النتيجة الصامتة يجب أن تعني فقط أنه لا يوجد ما يُبلَّغ عنه."],
+["Path so far","المسيرة حتى الآن"],["Now","الآن"],["University","الجامعة"],
+["R&D Engineer, Smart Technology","مهندس بحث وتطوير، Smart Technology"],
+["Alexandria. Real-time computer vision and applied AI systems.","الإسكندرية. أنظمة رؤية حاسوبية لحظية وذكاء اصطناعي تطبيقي."],
+["B.Sc. Artificial Intelligence, Pharos University in Alexandria","بكالوريوس الذكاء الاصطناعي، جامعة فاروس بالإسكندرية"],
+["Graduation project AgliFly (on-board CNN surveillance drone) graded Excellent.","مشروع التخرج AgliFly (طائرة مراقبة بكشف CNN على متنها) بتقدير امتياز."],
+["Robotics and AI tracks.","مسارا الروبوتات والذكاء الاصطناعي."],
+["Toolkit","الأدوات"],["Skills","المهارات"],
+["Computer vision & deep learning","الرؤية الحاسوبية والتعلّم العميق"],["Deployment & backend","النشر والـ Backend"],["Geospatial","البيانات الجغرافية"],["Embedded","الأنظمة المدمجة"],["Languages","اللغات"],
+["Arabic · English","العربية · الإنجليزية"],
+["Contact","التواصل"],["Let's build something that works on real footage.","لنبنِ معاً شيئاً يعمل على بيانات حقيقية."],
+["I'm open to AI and computer vision roles, especially work that takes a model all the way to the people who use it.","متاح لوظائف الذكاء الاصطناعي والرؤية الحاسوبية، خاصةً العمل الذي يأخذ النموذج حتى يصل إلى الناس الذين يستخدمونه."],
+["Email","البريد الإلكتروني"],["Phone / WhatsApp","الهاتف / واتساب"],["Copy","نسخ"],["Copied","تم النسخ"],["Selected","تم التحديد"],
+["© 2026 Youssef Kabbary · Alexandria, Egypt","© 2026 يوسف قبّاري · الإسكندرية، مصر"],["Back to top ↑","العودة للأعلى ↑"],["Close ✕","إغلاق ✕"],
+["Switch to dark mode","التبديل للوضع الغامق"],["Switch to light mode","التبديل للوضع الفاتح"],
+["Receivables and cheques","المستحقات والشيكات"],["HR and payroll","الموارد البشرية والمرتبات"],["Inventory and stock movements","المخزن وحركة الأصناف"],
+["Site cost report: labour, equipment, waste and expenses rolled up per site and period, with cost per metre and per pile, and data-quality warnings when something is missing.","تقرير تكلفة المواقع: العمالة والمعدات والهالك والمصاريف مجمّعة لكل موقع وفترة، مع تكلفة المتر والخازوق، وتنبيهات جودة البيانات عند نقص أي شيء."],
+["Receivables and cheques: what clients owe, what's been collected, what remains, and cheques coming due.","المستحقات والشيكات: المستحق على العملاء، وما تم تحصيله، والمتبقي، والشيكات القريبة."],
+["HR and payroll: employees, salary advances and deductions, bonuses and each employee's net pay.","الموارد البشرية والمرتبات: الموظفون، والسلف والخصومات، والبونصات، وصافي مستحقات كل موظف."],
+["Inventory: items, storage locations, stock movements and reorder levels, with valued stock per item.","المخزن: الأصناف، ومواقع التخزين، وحركة المخزون، وحد إعادة الطلب، مع قيمة المخزون لكل صنف."],
+["Production planning calculator: rig, pile type, soil, diameter and depth give expected, best and worst-case duration and concrete volume, from the company's recorded production rates.","حاسبة تخطيط الإنتاج: نوع المعدة ونوع الخازوق والتربة والقطر والعمق تعطي المدة المتوقعة وأفضل وأسوأ حالة وحجم الخرسانة، من معدلات الإنتاج المسجلة للشركة."],
+["The same calculator in the dark theme. Light, dark and system themes throughout.","نفس الحاسبة في الوضع الغامق. وضع فاتح وغامق وتلقائي في النظام كله."],
+["SafeRoute AI dashboard: English/Arabic, one HTML file served by the API, with live model status.","لوحة SafeRoute AI: عربي وإنجليزي، ملف HTML واحد يقدمه الـ API، مع حالة النماذج المباشرة."],
+["Road geometry measured from OpenStreetMap and SRTM elevation: curve radius, grade, sight distance, with a confidence value.","هندسة الطريق مقاسة من OpenStreetMap وارتفاعات SRTM: نصف قطر المنحنى، والميل، ومسافة الرؤية، مع قيمة ثقة."],
+["Analysis result: names every model that ran and every one that didn't, with Sentinel-2 imagery of the same road a year apart.","نتيجة التحليل: تذكر كل نموذج عمل وكل نموذج لم يعمل، مع صور Sentinel-2 لنفس الطريق بفارق سنة."],
+["Every route documented as an OpenAPI schema at /docs.","كل مسار موثّق كـ OpenAPI schema على ‎/docs."],
+["One unbroken run on real footage: detection, gate counting, zones, heatmap, zoom and enhancement.","تشغيل متصل واحد على فيديو حقيقي: كشف، وعدّ بوابات، ومناطق، وخريطة حرارية، وتكبير وتحسين."],
+["Tracking with persistent IDs and confidence, fused head points, a live panel with flow, forecast and system state.","تتبّع بمعرّفات ثابتة ونسبة ثقة، ونقاط رأس مدمجة، ولوحة مباشرة للتدفق والتوقع وحالة النظام."],
+["Gate counting: draw a line on the video and crossings are tallied by direction.","عدّ البوابات: ارسم خطاً على الفيديو وتُحسب مرات العبور حسب الاتجاه."],
+["v1 settings (left) and v2 settings (right) on the same frames. Both run the same fixed code; only the model and inference resolution differ.","إعدادات v1 (يسار) و v2 (يمين) على نفس الإطارات. الاثنان يشغّلان نفس الكود المصحَّح، والفرق فقط في النموذج ودقة الاستدلال."],
+["Same firmware, same commands, two front ends: the standard control panel and the animated kids edition.","نفس البرنامج الثابت ونفس الأوامر، وواجهتان: لوحة التحكم العادية ونسخة الأطفال المتحركة."],
+["System architecture: sensors and actuators on the Arduino Nano, the one-character protocol, and both desktop apps.","معمارية النظام: الحساسات والمحركات على Arduino Nano، وبروتوكول الحرف الواحد، والتطبيقان."],
+["Kids edition: an animated tank where the fish react to live water quality from the turbidity sensor.","نسخة الأطفال: حوض متحرك تتفاعل فيه الأسماك مع جودة المياه اللحظية من حساس العكارة."]
+  ];
+  function norm(s){return String(s).replace(/\s+/g,'')}
+  var map={},plain={};
+  AR.forEach(function(p){map[norm(p[0])]=p[1];plain[p[0]]=p[1].replace(/<[^>]+>/g,'')});
+  window.__t=function(s){return lang==='ar'&&plain[s]?plain[s]:s};
+
+  /* ---------- theme ---------- */
+  var mq=matchMedia('(prefers-color-scheme: dark)');
+  var themeBtn=document.getElementById('theme-btn');
+  function effective(){var t=root.getAttribute('data-theme');return t==='dark'||t==='light'?t:(mq.matches?'dark':'light')}
+  function paintTheme(){
+    var m=effective();root.setAttribute('data-mode',m);
+    var label=__t(m==='dark'?'Switch to light mode':'Switch to dark mode');
+    themeBtn.setAttribute('aria-label',label);themeBtn.title=label;
+  }
+  var savedTheme=read('yk-theme');
+  if(savedTheme==='dark'||savedTheme==='light')root.setAttribute('data-theme',savedTheme);
+  themeBtn.addEventListener('click',function(){
+    var next=effective()==='dark'?'light':'dark';root.setAttribute('data-theme',next);store('yk-theme',next);paintTheme();
+  });
+  if(mq.addEventListener)mq.addEventListener('change',paintTheme);
+
+  /* ---------- language ---------- */
+  var SVGNS='http://www.w3.org/2000/svg';
+  var SEL='.mark,nav a,h1,h2,h3,h4,p,li,dt,dd,th,td,figcaption,.eyebrow,.chip,.status,.when,.timeline b,.k,.l,.src,.cta .btn,.channel button,footer span,footer a,.skills dd span,svg text,#lb-close';
+  var nodes=[].slice.call(document.querySelectorAll(SEL)).filter(function(el){
+    if(el.closest('.tools'))return false;
+    var ar=map[norm(el.textContent)];
+    if(ar===undefined)return false;
+    el.__en=el.namespaceURI===SVGNS?el.textContent:el.innerHTML;
+    el.__ar=el.classList&&el.classList.contains('mark')?'<i></i>'+ar:ar;
+    return true;
+  });
+  var caps=[].slice.call(document.querySelectorAll('[data-cap]'));
+  caps.forEach(function(b){b.__capEn=b.getAttribute('data-cap');b.__capAr=map[norm(b.__capEn)]||b.__capEn});
+  var langBtn=document.getElementById('lang-btn');
+
+  function applyLang(l){
+    lang=l;
+    root.setAttribute('lang',l);root.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    nodes.forEach(function(el){
+      var v=l==='ar'?el.__ar:el.__en;
+      if(el.namespaceURI===SVGNS)el.textContent=v;else el.innerHTML=v;
+    });
+    caps.forEach(function(b){b.setAttribute('data-cap',l==='ar'?b.__capAr:b.__capEn)});
+    langBtn.innerHTML=l==='ar'?'<span>EN</span>':'<span class="ar-label">عربي</span>';
+    var lab=l==='ar'?'View this page in English':'عرض الصفحة بالعربية';
+    langBtn.setAttribute('aria-label',lab);langBtn.title=lab;
+    document.title=l==='ar'?'يوسف قبّاري':'Youssef Kabbary';
+    paintTheme();
+  }
+  langBtn.addEventListener('click',function(){var n=lang==='ar'?'en':'ar';applyLang(n);store('yk-lang',n)});
+  applyLang(location.hash==='#ar'||read('yk-lang')==='ar'?'ar':'en');
+})();
+</script>
+</body>
+</html>
