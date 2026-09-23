@@ -237,6 +237,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 :root[lang="ar"] .hero h1{line-height:1.15}
 :root[lang="ar"] .case h3{line-height:1.2}
 :root[lang="ar"] body{line-height:1.8}
+:root[lang="ar"] .metric .n,:root[lang="ar"] .results td,:root[lang="ar"] .results td small{unicode-bidi:plaintext;text-align:right}
 
 @media (max-width:980px){
   .index{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -740,6 +741,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
   function loop(){if(running){step();draw()}requestAnimationFrame(loop)}
   size();for(var k=0;k<7;k++)spawn(true);
   addEventListener('resize',function(){size();draw()});
+  if('ResizeObserver' in window){new ResizeObserver(function(){size();people.forEach(function(p){p.x=Math.min(Math.max(p.x,W*.1),W*.9);p.trail=[]})}).observe(c)}
   if('IntersectionObserver' in window){new IntersectionObserver(function(e){running=e[0].isIntersecting}).observe(c)}
   if(reduce){for(var n=0;n<120;n++)step();draw()}else loop();
 })();
