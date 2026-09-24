@@ -320,7 +320,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       <div class="metric" role="listitem"><div class="n">43–72<small>ms</small></div><div class="l">per frame for real-time crowd analytics, down from 95–232 ms</div><div class="src">measured · RTX 3050 laptop</div></div>
       <div class="metric" role="listitem"><div class="n">28</div><div class="l">defects found and fixed in a line-by-line audit of my own v1</div><div class="src">each one reproduced</div></div>
       <div class="metric" role="listitem"><div class="n">191k</div><div class="l">real fatal-crash records used to train a road-risk Transformer</div><div class="src">NHTSA FARS</div></div>
-      <div class="metric" role="listitem"><div class="n">254</div><div class="l">automated tests behind a 141-route production API</div><div class="src">43 PostgreSQL tables</div></div>
+      <div class="metric" role="listitem"><div class="n">424</div><div class="l">automated tests behind a 141-route production API</div><div class="src">43 PostgreSQL tables</div></div>
     </div>
 
     <!-- WORK INDEX -->
@@ -332,7 +332,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       <div class="index">
         <a class="tile wide" href="#ops">
           <div class="thumb"><img src="img/ops-site-cost.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="eyebrow">Flagship · full-stack · in daily use</span><h3>Piling Operations Platform</h3><p>An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 254 tests, Arabic RTL.</p><span class="meta">FastAPI · PostgreSQL</span></div>
+          <div class="body"><span class="eyebrow">Flagship · full-stack · in daily use</span><h3>MGICO ERP System</h3><p>A real ERP that MGICO, a piling contractor, commissioned from me and now runs its daily work on: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.</p><span class="meta">FastAPI · PostgreSQL</span></div>
         </a>
         <a class="tile wide" href="#saferoute">
           <div class="thumb"><img src="img/saferoute-home.png" alt="" loading="lazy"></div>
@@ -358,13 +358,13 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       <div class="case-head">
         <div>
           <div class="chips"><span class="chip">Full-stack · construction</span><span class="chip amber">Client work · in daily use</span></div>
-          <h3>Piling Operations Platform</h3>
-          <p class="summary">An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.</p>
+          <h3>MGICO ERP System</h3>
+          <p class="summary">A real client project, not a personal one. MGICO, a piling and foundations contracting company, commissioned its internal ERP from me. I designed, built and delivered it end to end, and the company runs its daily operations on it: site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.</p>
         </div>
         <dl class="spec">
           <dt>Role</dt><dd>Sole engineer: schema, API, UI, tests</dd>
           <dt>Stack</dt><dd>FastAPI, PostgreSQL, Python, pytest, RTL web UI</dd>
-          <dt>Code</dt><dd>Private. Screenshots use test data, with project names blurred.</dd>
+          <dt>Code</dt><dd>Private: the code belongs to MGICO. Figures in the screenshots are blurred. <a href="https://github.com/YoussefKabbary/mgico-showcase" target="_blank" rel="noopener">Overview ↗</a></dd>
         </dl>
       </div>
 
@@ -396,9 +396,41 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
               <tr><th>API routes</th><td>141</td></tr>
               <tr><th>PostgreSQL tables</th><td>43</td></tr>
               <tr><th>Schema migrations</th><td>28</td></tr>
-              <tr><th>Automated tests</th><td>254</td></tr>
+              <tr><th>Automated tests</th><td>424</td></tr>
             </table>
           </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RTL ADMIN STARTER -->
+    <article class="case" id="rtl-starter">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Open source · template</span></div>
+          <h3>rtl-admin-starter</h3>
+          <p class="summary">A small open-source starter for Arabic, right-to-left admin dashboards on FastAPI. It collects the patterns from the MGICO work into public code, written from scratch with demo data. It is a separate project and shares no code or data with the MGICO ERP.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Author</dd>
+          <dt>Stack</dt><dd>FastAPI, SQLite, vanilla JS, CSS, pytest</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/rtl-admin-starter" target="_blank" rel="noopener">github.com/YoussefKabbary/rtl-admin-starter ↗</a></dd>
+        </dl>
+      </div>
+
+      <div class="gallery two">
+        <figure><button type="button" data-full="img/rtl-desktop.png" data-cap="Desktop: server-side search and pagination over an inventory table, right-to-left from the root."><img src="img/rtl-desktop.png" alt="Inventory table on desktop, Arabic right-to-left" loading="lazy"></button><figcaption>Desktop: search and pagination</figcaption></figure>
+        <figure><button type="button" data-full="img/rtl-mobile.png" data-cap="Phone: the same markup rendered as labelled cards by CSS alone."><img src="img/rtl-mobile.png" alt="The same table on a phone, shown as cards" loading="lazy"></button><figcaption>Phone: the table becomes cards</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What is inside</h4>
+          <ul class="points">
+            <li><b>RTL at the root:</b> dir on the html element, logical CSS properties, and bidi isolation for Latin text inside Arabic.</li>
+            <li><b>Closed by default:</b> one gate authenticates every route, and a test calls every route without a token and expects 401.</li>
+            <li><b>Readable outdoors:</b> light, dark and a high-contrast sun mode with large touch targets.</li>
+          </ul>
         </div>
       </div>
     </article>
@@ -421,7 +453,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       <button class="shot" type="button" data-full="img/saferoute-home.png" data-cap="SafeRoute AI dashboard: English/Arabic, one HTML file served by the API, with live model status."><img src="img/saferoute-home.png" alt="SafeRoute AI dashboard with road inspection form and model status" loading="lazy"></button>
       <div class="gallery">
         <figure><button type="button" data-full="img/saferoute-drive.gif" data-cap="In the car: a spoken warning counts down to a 196 m curve on the Regional Ring Road, with the measured road ahead drawn on the phone. No map tiles, so it works with no signal."><img src="img/saferoute-drive.gif" alt="Drive screen: a warning counting down before a curve, with the road ahead drawn below" loading="lazy"></button><figcaption>Spoken warning + road-ahead view, offline</figcaption></figure>
-        <figure><button type="button" data-full="img/saferoute-egypt.png" data-cap="Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches signed faster than their geometry holds."><img src="img/saferoute-egypt.png" alt="Map of Egypt's measured roads coloured by risk" loading="lazy"></button><figcaption>6,026 km of Egyptian roads, measured</figcaption></figure>
+        <figure><button type="button" data-full="img/saferoute-egypt.png" data-cap="Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches whose speed limit is above what their geometry holds, 227 of them on a mapped sign."><img src="img/saferoute-egypt.png" alt="Map of Egypt's measured roads coloured by risk" loading="lazy"></button><figcaption>6,026 km of Egyptian roads, measured</figcaption></figure>
         <figure><button type="button" data-full="img/saferoute-system.png" data-cap="System diagram: open data in, every road cut into 300 m stretches and measured, and who each output is for."><img src="img/saferoute-system.png" alt="SafeRoute AI system diagram" loading="lazy"></button><figcaption>How it fits together</figcaption></figure>
         <figure><button type="button" data-full="img/road-measured.png" data-cap="Road geometry measured from OpenStreetMap and SRTM elevation: curve radius, grade, sight distance, with a confidence value."><img src="img/road-measured.png" alt="Measured road geometry panel" loading="lazy"></button><figcaption>Geometry measured from OpenStreetMap + SRTM</figcaption></figure>
         <figure><button type="button" data-full="img/analysis-result.png" data-cap="Analysis result: names every model that ran and every one that didn't, with Sentinel-2 imagery of the same road a year apart."><img src="img/analysis-result.png" alt="Analysis result with model breakdown and Sentinel-2 crops" loading="lazy"></button><figcaption>Result names which models actually ran</figcaption></figure>
@@ -436,7 +468,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
             <li><b>Site reports for road authorities:</b> an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from "this week" to "budgeted works".</li>
             <li><b>Safer routing:</b> a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.</li>
             <li><b>Driver warnings designed against alarm fatigue:</b> the app stays silent unless the warning changes what the driver should do. When it speaks, it is 250 m before the curve, counting down, with the measured road ahead drawn on the phone from an offline pack, no map tiles.</li>
-            <li><b>Egypt's main roads, measured:</b> 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them are signed faster than their own geometry holds.</li>
+            <li><b>Egypt's main roads, measured:</b> 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them have a speed limit above what their geometry holds; 227 of those limits are on a mapped sign.</li>
             <li><b>Audited before launch:</b> 61 checks run against the live server, not the code alone. Fixed a hardcoded default password, a forged-header bypass of the rate limits and unsandboxed uploads; added an audit trail of admin actions. 616 automated tests.</li>
             <li><b>No fake confidence:</b> a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.</li>
           </ul>
@@ -448,7 +480,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
               <tr><th>Crash predictor, 47 held-out locations</th><td>AUC 0.628<small>logistic regression 0.606 · gradient boosting 0.624</small></td></tr>
               <tr><th>Cairo Ring Road segmentation</th><td>635 segments in ~11 s<small>381 OSM ways · 189 km</small></td></tr>
               <tr><th>Safer vs fastest route, Ring Road</th><td>6.61 vs 7.21 risk-km<small>25.0 vs 26.2 km · +24 s travel time</small></td></tr>
-              <tr><th>Egypt's main roads measured</th><td>6,026 km · 20,161 stretches<small>785 signed faster than their geometry holds</small></td></tr>
+              <tr><th>Egypt's main roads measured</th><td>6,026 km · 20,161 stretches<small>785 with a limit above what they hold · 227 on a mapped sign</small></td></tr>
               <tr><th>Sites above action threshold</th><td>22 sites<small>signs + limit fixes for all: EGP 434k–1,074k</small></td></tr>
             </table>
           </div>
@@ -783,8 +815,8 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Selected work","أبرز الأعمال"],["Five systems, end to end","خمسة أنظمة، من الفكرة حتى التشغيل"],
 ["Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.","رؤية حاسوبية، وتعلّم آلي على بيانات جغرافية، وأنظمة Backend إنتاجية، وعتاد مدمج. كل رقم مذكور معه ما قيس عليه."],
 ["Flagship · full-stack · in daily use","المشروع الرئيسي · Full-stack · مستخدم يومياً"],
-["Piling Operations Platform","منصة تشغيل شركة خوازيق"],
-["An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 254 tests, Arabic RTL.","نظام تشغيل لشركة مقاولات خوازيق: سجلات المواقع، والتسعير، والتخطيط، والموارد البشرية، والمالية. 141 مسار API، و43 جدولاً، و254 اختباراً، بواجهة عربية."],
+["MGICO ERP System","نظام ERP لشركة MGICO"],
+
 ["Road safety AI","ذكاء اصطناعي للسلامة على الطرق"],
 ["Scores road danger from four independent signals and turns it into action for authorities, routing and drivers.","يقيّم خطورة الطرق من أربع إشارات مستقلة ويحوّلها إلى إجراءات لجهات الطرق والتوجيه والسائقين."],
 ["Real-time computer vision","رؤية حاسوبية لحظية"],
@@ -793,8 +825,20 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Arduino firmware and two desktop apps over USB and Bluetooth.","برنامج Arduino وتطبيقان لسطح المكتب عبر USB و Bluetooth."],
 ["Graduation project · Excellent","مشروع التخرج · امتياز"],
 ["Autonomous surveillance drone with on-board CNN detection.","طائرة مسيّرة ذاتية للمراقبة تكتشف الأجسام بشبكة CNN على متنها."],
+["A real ERP that MGICO, a piling contractor, commissioned from me and now runs its daily work on: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.","نظام ERP حقيقي طلبته مني شركة MGICO للخوازيق وبتشغّل عليه شغلها اليومي: سجلات المواقع، والتسعير، والتخطيط، والموارد البشرية، والمالية. 141 مسار API، و43 جدول، و424 اختبار، وواجهة عربية."],
+["Private: the code belongs to MGICO. Figures in the screenshots are blurred. Overview ↗","خاص: الكود ملك شركة MGICO. الأرقام في الصور عليها تمويه. <a href=\"https://github.com/YoussefKabbary/mgico-showcase\" target=\"_blank\" rel=\"noopener\">نظرة عامة ↗</a>"],
+["Open source · template","مفتوح المصدر · قالب"],
+["A small open-source starter for Arabic, right-to-left admin dashboards on FastAPI. It collects the patterns from the MGICO work into public code, written from scratch with demo data. It is a separate project and shares no code or data with the MGICO ERP.","قالب مفتوح المصدر للوحات تحكم عربية من اليمين لليسار على FastAPI. بيجمع الأنماط اللي اتعلمتها في شغل MGICO في كود منشور، مكتوب من الصفر ببيانات تجريبية. مشروع منفصل، ومفيهوش أي كود أو بيانات من نظام MGICO."],
+["Author","المؤلف"],["FastAPI, SQLite, vanilla JS, CSS, pytest","FastAPI، وSQLite، وJavaScript، وCSS، وpytest"],
+["Desktop: search and pagination","الكمبيوتر: بحث وتقسيم صفحات"],["Phone: the table becomes cards","الموبايل: الجدول بيتحوّل لكروت"],
+["Desktop: server-side search and pagination over an inventory table, right-to-left from the root.","الكمبيوتر: بحث وتقسيم صفحات من السيرفر على جدول مخزن، واتجاه من اليمين لليسار من الأساس."],
+["Phone: the same markup rendered as labelled cards by CSS alone.","الموبايل: نفس الصفحة بتظهر ككروت بعناوين، بـ CSS بس."],
+["What is inside","فيه إيه"],
+["RTL at the root: dir on the html element, logical CSS properties, and bidi isolation for Latin text inside Arabic.","الاتجاه من الأساس: dir على عنصر html، وخصائص CSS منطقية، وعزل النص الإنجليزي جوه الجمل العربية."],
+["Closed by default: one gate authenticates every route, and a test calls every route without a token and expects 401.","مقفول افتراضيًا: بوابة واحدة بتتحقق من كل المسارات، واختبار بينادي كل مسار من غير تسجيل دخول ومستني 401."],
+["Readable outdoors: light, dark and a high-contrast sun mode with large touch targets.","مقروء في الشمس: وضع فاتح وغامق ووضع تباين عالي، وأزرار كبيرة للمس."],
 ["Full-stack · construction","Full-stack · مقاولات"],["Client work · in daily use","مشروع لعميل · مستخدم يومياً"],
-["An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.","نظام تشغيل داخلي بنيته بالكامل لشركة مقاولات خوازيق وأساسات. يغطي سجلات المواقع، وتقدير التكلفة، وتخطيط الإنتاج، والموارد البشرية، وسجل تدقيق كامل، بواجهة عربية مصممة للاستخدام في الموقع."],
+["A real client project, not a personal one. MGICO, a piling and foundations contracting company, commissioned its internal ERP from me. I designed, built and delivered it end to end, and the company runs its daily operations on it: site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.","مشروع حقيقي لعميل، مش مشروع شخصي. شركة MGICO للخوازيق والأساسات طلبت مني نظام ERP داخلي، وأنا صمّمته وبنيته وسلّمته من أوله لآخره، والشركة بتشغّل عليه شغلها اليومي: سجلات المواقع، وتسعير التكلفة، وتخطيط الإنتاج، والموارد البشرية، وسجل كامل للتغييرات، بواجهة عربية من اليمين لليسار معمولة للاستخدام في الموقع."],
 ["Role","الدور"],["Stack","التقنيات"],["Code","الكود"],["Where","المكان"],
 ["Sole engineer: schema, API, UI, tests","المهندس الوحيد: قاعدة البيانات، والـ API، والواجهة، والاختبارات"],
 ["Private. Screenshots use test data, with project names blurred.","خاص. الصور ببيانات تجريبية، مع إخفاء أسماء المشاريع."],
@@ -815,12 +859,12 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Site reports for road authorities: an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from \"this week\" to \"budgeted works\".","<b>تقارير مواقع لجهات الطرق:</b> تقرير A4 بالعربية ومعه الإنجليزية. الحلول مأخوذة من معاملات تعديل الحوادث المنشورة (FHWA و AASHTO HSM)، بتكلفة تقديرية بالجنيه المصري، ومرحلة من «هذا الأسبوع» حتى «أعمال بميزانية»."],
 ["Safer routing: a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.","<b>توجيه أكثر أماناً:</b> شبكة طرق من OpenStreetMap مقيّمة بـ«كيلومترات الخطر» على مقاطع 300 متر، توازن بين وقت الرحلة والتعرض للطرق الخطرة."],
 ["Driver warnings designed against alarm fatigue: the app stays silent unless the warning changes what the driver should do. When it speaks, it is 250 m before the curve, counting down, with the measured road ahead drawn on the phone from an offline pack, no map tiles.","<b>تحذيرات للسائق مصممة ضد إرهاق التنبيهات:</b> التطبيق يصمت إلا إذا كان التحذير سيغيّر ما يجب على السائق فعله. وعندما يتكلم يكون ذلك قبل المنحنى بـ 250 متراً مع عدّ تنازلي، والطريق المقاس أمامه مرسوم على الهاتف من حزمة تعمل بدون إنترنت، بلا خرائط جاهزة."],
-["Egypt's main roads, measured: 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them are signed faster than their own geometry holds.","<b>الطرق الرئيسية في مصر، مقاسة:</b> 14 طريقاً بين المدن بأسمائها على الخريطة، و6,026 كم من الاتجاهات مقسمة إلى 20,161 مقطعاً. منها 785 مقطعاً حدّ السرعة المكتوب عليها أعلى مما تتحمله هندستها."],
+["Egypt's main roads, measured: 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them have a speed limit above what their geometry holds; 227 of those limits are on a mapped sign.","<b>الطرق الرئيسية في مصر، مقاسة:</b> 14 طريقاً بين المدن بأسمائها على الخريطة، و6,026 كم من الاتجاهات مقسمة إلى 20,161 مقطعاً. منها 785 مقطعاً حدّ السرعة فيها أعلى مما تتحمله هندستها، و227 من هذه الحدود على لافتة مسجلة في الخريطة."],
 ["Audited before launch: 61 checks run against the live server, not the code alone. Fixed a hardcoded default password, a forged-header bypass of the rate limits and unsandboxed uploads; added an audit trail of admin actions. 616 automated tests.","<b>مراجعة قبل الإطلاق:</b> 61 فحصاً على الخادم وهو يعمل، لا على الكود وحده. أصلحت كلمة مرور افتراضية مكتوبة في الكود، وتجاوزاً لحدود الطلبات بعنوان مزيّف، ورفع ملفات غير معزول، وأضفت سجلاً لكل إجراءات المدير. 616 اختباراً آلياً."],
-["Egypt's main roads measured","الطرق الرئيسية في مصر المقاسة"],["6,026 km · 20,161 stretches 785 signed faster than their geometry holds","6,026 كم · 20,161 مقطعاً<small>785 منها حدّ سرعتها أعلى مما تتحمله هندستها</small>"],
+["Egypt's main roads measured","الطرق الرئيسية في مصر المقاسة"],["6,026 km · 20,161 stretches 785 with a limit above what they hold · 227 on a mapped sign","6,026 كم · 20,161 مقطعاً<small>785 منها حدّ سرعتها أعلى مما تتحمله هندستها · 227 على لافتة مسجلة</small>"],
 ["Spoken warning + road-ahead view, offline","تحذير صوتي + الطريق أمامك، بدون إنترنت"],["6,026 km of Egyptian roads, measured","6,026 كم من الطرق المصرية، مقاسة"],["How it fits together","كيف تترابط الأجزاء"],
 ["In the car: a spoken warning counts down to a 196 m curve on the Regional Ring Road, with the measured road ahead drawn on the phone. No map tiles, so it works with no signal.","في السيارة: تحذير صوتي بعدّ تنازلي قبل منحنى نصف قطره 196 متراً على الطريق الدائري الإقليمي، والطريق المقاس أمامك مرسوم على الهاتف. بلا خرائط جاهزة، فيعمل بدون شبكة."],
-["Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches signed faster than their geometry holds.","الطرق الرئيسية في مصر مقاسة كل 300 متر: 14 طريقاً، و6,026 كم من الاتجاهات، و20,161 مقطعاً. النقاط البيضاء: الـ 785 مقطعاً التي حدّ سرعتها أعلى مما تتحمله هندستها."],
+["Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches whose speed limit is above what their geometry holds, 227 of them on a mapped sign.","الطرق الرئيسية في مصر مقاسة كل 300 متر: 14 طريقاً، و6,026 كم من الاتجاهات، و20,161 مقطعاً. النقاط البيضاء: الـ 785 مقطعاً التي حدّ سرعتها أعلى مما تتحمله هندستها، منها 227 على لافتة مسجلة في الخريطة."],
 ["System diagram: open data in, every road cut into 300 m stretches and measured, and who each output is for.","مخطط النظام: بيانات مفتوحة تدخل، وكل طريق يُقسم إلى مقاطع 300 متر ويُقاس، ولمن تذهب كل نتيجة."],
 ["No fake confidence: a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.","<b>بدون ثقة مزيفة:</b> النموذج الذي لا يستطيع العمل لا يساهم بشيء بدلاً من قيمة 0.5 وهمية، وكل استجابة تذكر النماذج التي عملت."],
 ["Crash predictor, 47 held-out locations","التنبؤ بالحوادث، 47 موقعاً لم يرها النموذج"],
