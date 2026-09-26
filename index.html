@@ -187,7 +187,7 @@ img{display:block}
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
 .timeline{list-style:none;margin:0;padding:0}
-.timeline li{display:grid;grid-template-columns:96px 1fr;gap:18px;padding-block:18px;border-top:1px solid var(--rule)}
+.timeline li{display:grid;grid-template-columns:124px 1fr;gap:18px;padding-block:18px;border-top:1px solid var(--rule)}
 .timeline li:first-child{border-top:0;padding-top:0}
 .timeline .when{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);padding-top:3px}
 .timeline b{font-weight:600;font-size:16.5px}
@@ -298,12 +298,13 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
         <p class="lead"><b>AI &amp; Computer Vision Engineer</b> building real-time detection, tracking and risk-scoring systems, from the model to the API and interface people actually use.</p>
         <div class="cta">
           <a class="btn primary" href="#work">View selected work</a>
+          <a class="btn" href="https://youssefkabbary.github.io/cv/Youssef_Kabbary_CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
           <a class="btn" href="https://github.com/YoussefKabbary" target="_blank" rel="noopener">GitHub ↗</a>
           <a class="btn" href="https://www.linkedin.com/in/youssef-kabbary" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
         <dl class="facts">
           <div><dt>Current</dt><dd>R&amp;D Engineer<br>Smart Technology, Alexandria</dd></div>
-          <div><dt>Education</dt><dd>B.Sc. Artificial Intelligence<br>Pharos University, 2025</dd></div>
+          <div><dt>Education</dt><dd>B.Sc. CS, Artificial Intelligence<br>Pharos University, 2025</dd></div>
           <div><dt>Focus</dt><dd>Real-time CV, tracking,<br>applied ML, FastAPI</dd></div>
         </dl>
       </div>
@@ -415,15 +416,11 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
           <dt>Role</dt><dd>Sole engineer: data, models, API, UI</dd>
           <dt>Stack</dt><dd>PyTorch, Transformers, YOLOv8, FastAPI, OSM, Sentinel-2, SRTM</dd>
           <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/SafeRoute-AI" target="_blank" rel="noopener">github.com/YoussefKabbary/SafeRoute-AI ↗</a></dd>
-          <dt>Live</dt><dd><a href="https://saferoute.tail88a5c1.ts.net/" target="_blank" rel="noopener">saferoute.tail88a5c1.ts.net ↗</a></dd>
         </dl>
       </div>
 
       <button class="shot" type="button" data-full="img/saferoute-home.png" data-cap="SafeRoute AI dashboard: English/Arabic, one HTML file served by the API, with live model status."><img src="img/saferoute-home.png" alt="SafeRoute AI dashboard with road inspection form and model status" loading="lazy"></button>
       <div class="gallery">
-        <figure><button type="button" data-full="img/saferoute-drive.gif" data-cap="In the car: a spoken warning counts down to a 196 m curve on the Regional Ring Road, with the measured road ahead drawn on the phone. No map tiles, so it works with no signal."><img src="img/saferoute-drive.gif" alt="Drive screen: a warning counting down before a curve, with the road ahead drawn below" loading="lazy"></button><figcaption>Spoken warning + road-ahead view, offline</figcaption></figure>
-        <figure><button type="button" data-full="img/saferoute-egypt.png" data-cap="Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches whose speed limit is above what their geometry holds, 227 of them on a mapped sign."><img src="img/saferoute-egypt.png" alt="Map of Egypt's measured roads coloured by risk" loading="lazy"></button><figcaption>6,026 km of Egyptian roads, measured</figcaption></figure>
-        <figure><button type="button" data-full="img/saferoute-system.png" data-cap="System diagram: open data in, every road cut into 300 m stretches and measured, and who each output is for."><img src="img/saferoute-system.png" alt="SafeRoute AI system diagram" loading="lazy"></button><figcaption>How it fits together</figcaption></figure>
         <figure><button type="button" data-full="img/road-measured.png" data-cap="Road geometry measured from OpenStreetMap and SRTM elevation: curve radius, grade, sight distance, with a confidence value."><img src="img/road-measured.png" alt="Measured road geometry panel" loading="lazy"></button><figcaption>Geometry measured from OpenStreetMap + SRTM</figcaption></figure>
         <figure><button type="button" data-full="img/analysis-result.png" data-cap="Analysis result: names every model that ran and every one that didn't, with Sentinel-2 imagery of the same road a year apart."><img src="img/analysis-result.png" alt="Analysis result with model breakdown and Sentinel-2 crops" loading="lazy"></button><figcaption>Result names which models actually ran</figcaption></figure>
         <figure><button type="button" data-full="img/api-docs.png" data-cap="Every route documented as an OpenAPI schema at /docs."><img src="img/api-docs.png" alt="Interactive OpenAPI documentation" loading="lazy"></button><figcaption>Full OpenAPI reference</figcaption></figure>
@@ -436,9 +433,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
             <li><b>Four independent risk signals:</b> AASHTO geometry physics, a Transformer crash predictor, Sentinel-2 hazards (flooding, sand, roadside canals) compared against the same road a year earlier, and YOLOv8 pavement defects.</li>
             <li><b>Site reports for road authorities:</b> an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from "this week" to "budgeted works".</li>
             <li><b>Safer routing:</b> a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.</li>
-            <li><b>Driver warnings designed against alarm fatigue:</b> the app stays silent unless the warning changes what the driver should do. When it speaks, it is 250 m before the curve, counting down, with the measured road ahead drawn on the phone from an offline pack, no map tiles.</li>
-            <li><b>Egypt's main roads, measured:</b> 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them have a speed limit above what their geometry holds; 227 of those limits are on a mapped sign.</li>
-            <li><b>Audited before launch:</b> 61 checks run against the live server, not the code alone. Fixed a hardcoded default password, a forged-header bypass of the rate limits and unsandboxed uploads; added an audit trail of admin actions. 616 automated tests.</li>
+            <li><b>Driver warnings designed against alarm fatigue:</b> the app stays silent unless the warning changes what the driver should do. All of Cairo comes down to 13 warnings from 1,055 measured segments, in a 5 kB pack that works offline.</li>
             <li><b>No fake confidence:</b> a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.</li>
           </ul>
         </div>
@@ -449,14 +444,13 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
               <tr><th>Crash predictor, 47 held-out locations</th><td>AUC 0.628<small>logistic regression 0.606 · gradient boosting 0.624</small></td></tr>
               <tr><th>Cairo Ring Road segmentation</th><td>635 segments in ~11 s<small>381 OSM ways · 189 km</small></td></tr>
               <tr><th>Safer vs fastest route, Ring Road</th><td>6.61 vs 7.21 risk-km<small>25.0 vs 26.2 km · +24 s travel time</small></td></tr>
-              <tr><th>Egypt's main roads measured</th><td>6,026 km · 20,161 stretches<small>785 with a limit above what they hold · 227 on a mapped sign</small></td></tr>
               <tr><th>Sites above action threshold</th><td>22 sites<small>signs + limit fixes for all: EGP 434k–1,074k</small></td></tr>
             </table>
           </div>
           <div class="limits">
             <h4>Known limits &amp; next step</h4>
             <ul>
-              <li>The risk model is trained on US crash data. Crash reports and drafting from Egyptian news are built to check it locally; the verdict stays "insufficient" until 30 reviewed Egyptian crashes exist.</li>
+              <li>The risk model is trained on US crash data. Egyptian crash locations are next, to validate it locally.</li>
               <li>The pavement detector is at mAP50 0.136 and needs retraining on Egyptian imagery.</li>
             </ul>
           </div>
@@ -633,16 +627,18 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
         <div>
           <div class="sec-head"><div><span class="eyebrow">Experience</span><h2>Path so far</h2></div></div>
           <ol class="timeline">
-            <li><span class="when">Now</span><div><b>R&amp;D Engineer, Smart Technology</b><p>Alexandria. Real-time computer vision and applied AI systems.</p></div></li>
-            <li><span class="when">2025</span><div><b>B.Sc. Artificial Intelligence, Pharos University in Alexandria</b><p>Graduation project AgliFly (on-board CNN surveillance drone) graded Excellent.</p></div></li>
-            <li><span class="when">University</span><div><b>Google Developer Student Clubs</b><p>Robotics and AI tracks.</p></div></li>
+            <li><span class="when">Jun 2026 – now</span><div><b>R&amp;D Engineer, ST Smart Technology</b><p>Alexandria. Built the training curriculum from scratch and teach university students, graduates and industry audiences in cohorts of up to 25. Mentor student teams building applied engineering projects for competitions.</p></div></li>
+            <li><span class="when">Jul – Sep 2026</span><div><b>Client project: ERP for MGICO Contracting</b><p>Designed, built and delivered the piling contractor's operations system end to end. It now runs their daily operations.</p></div></li>
+            <li><span class="when">May – Sep 2026</span><div><b>Robotics &amp; AI Instructor (part-time), Genio Tech Robotics</b><p>Taught an Arduino and robotics curriculum, including a four-session PCB design course, and mentored 20+ students.</p></div></li>
+            <li><span class="when">Sep 2025</span><div><b>B.Sc. Computer Science, Artificial Intelligence, Pharos University in Alexandria</b><p>Graduation project AgliFly (on-board CNN surveillance drone) graded Excellent.</p></div></li>
+            <li><span class="when">2023 – 2024</span><div><b>Core Team Member, Robotics &amp; AI, GDSC Pharos University</b><p>Delivered 8 technical workshops to 100+ students on machine learning, computer vision and robotics.</p></div></li>
           </ol>
         </div>
         <div>
           <div class="sec-head"><div><span class="eyebrow">Toolkit</span><h2>Skills</h2></div></div>
           <dl class="skills">
-            <div><dt>Computer vision &amp; deep learning</dt><dd><span>PyTorch</span><span>YOLOv8</span><span>OpenCV</span><span>Transformers</span><span>ByteTrack</span><span>scikit-learn</span><span>TensorFlow</span></dd></div>
-            <div><dt>Deployment &amp; backend</dt><dd><span>FastAPI</span><span>PostgreSQL</span><span>ONNX</span><span>CUDA / FP16</span><span>REST APIs</span><span>pytest</span></dd></div>
+            <div><dt>Computer vision &amp; deep learning</dt><dd><span>PyTorch</span><span>YOLOv8</span><span>OpenCV</span><span>Transformers</span><span>ByteTrack</span><span>scikit-learn</span><span>TensorFlow</span><span>Diffusion models</span><span>LoRA / PEFT</span></dd></div>
+            <div><dt>Deployment &amp; backend</dt><dd><span>FastAPI</span><span>PostgreSQL</span><span>ONNX</span><span>CUDA / FP16</span><span>REST APIs</span><span>Gradio</span><span>pytest</span></dd></div>
             <div><dt>Geospatial</dt><dd><span>OpenStreetMap</span><span>Sentinel-2</span><span>SRTM</span><span>Graph routing</span></dd></div>
             <div><dt>Embedded</dt><dd><span>Raspberry Pi</span><span>Arduino</span><span>ESP32</span><span>STM32</span></dd></div>
             <div><dt>Languages</dt><dd><span>Python</span><span>C++</span><span>SQL</span><span>JavaScript</span><span>Arabic · English</span></dd></div>
@@ -659,6 +655,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
         <p>I'm open to AI and computer vision roles, especially work that takes a model all the way to the people who use it.</p>
       </div>
       <div class="channels">
+        <div class="channel"><div><div class="k">CV</div><div class="v"><a href="https://youssefkabbary.github.io/cv/Youssef_Kabbary_CV.pdf" target="_blank" rel="noopener">Youssef_Kabbary_CV.pdf ↓</a></div></div></div>
         <div class="channel"><div><div class="k">Email</div><div class="v" id="email">youssefkabbary1152003@gmail.com</div></div><button type="button" id="copy-email" data-copy="email">Copy</button></div>
         <div class="channel"><div><div class="k">Phone / WhatsApp</div><div class="v" id="phone">+20 110 447 9279</div></div><button type="button" data-copy="phone">Copy</button></div>
         <div class="channel"><div><div class="k">LinkedIn</div><div class="v"><a href="https://www.linkedin.com/in/youssef-kabbary" target="_blank" rel="noopener">linkedin.com/in/youssef-kabbary ↗</a></div></div></div>
@@ -807,7 +804,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Operations: HR and attendance, equipment and inventory, global search, and a full audit trail.","<b>التشغيل:</b> الموارد البشرية والحضور، والمعدات والمخزن، وبحث شامل، وسجل تدقيق كامل."],
 ["Tests written around the real risks: one account can never read another's rows, login hardening, request limits, a cold start on an empty database, and pinned estimator arithmetic.","<b>اختبارات مبنية على المخاطر الحقيقية:</b> لا يمكن لحساب أن يقرأ بيانات حساب آخر، وتأمين تسجيل الدخول، وحدود للطلبات، والتشغيل على قاعدة بيانات فارغة، وتثبيت حسابات الحاسبة."],
 ["API routes","مسارات API"],["PostgreSQL tables","جداول PostgreSQL"],["Schema migrations","ترحيلات قاعدة البيانات"],["Automated tests","اختبارات آلية"],
-["Road safety · Egypt","السلامة على الطرق · مصر"],["Live","تجربة مباشرة"],["Active development","قيد التطوير"],
+["Road safety · Egypt","السلامة على الطرق · مصر"],["Active development","قيد التطوير"],
 ["A road-risk API for Egyptian and Saudi highways. It scores how dangerous a stretch of road is, then turns that score into something people can act on: a costed site report for the road authority, a safer route for the trip, and a spoken curve warning for the driver.","API لتقييم خطورة الطرق السريعة في مصر والسعودية. يحدد مدى خطورة كل جزء من الطريق، ثم يحوّل ذلك إلى شيء يمكن التصرف بناءً عليه: تقرير موقع بالتكلفة لجهة الطرق، ومسار أكثر أماناً للرحلة، وتحذير صوتي للسائق قبل المنحنيات."],
 ["Sole engineer: data, models, API, UI","المهندس الوحيد: البيانات، والنماذج، والـ API، والواجهة"],
 ["Geometry measured from OpenStreetMap + SRTM","هندسة الطريق مقاسة من OpenStreetMap و SRTM"],
@@ -815,21 +812,14 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Four independent risk signals: AASHTO geometry physics, a Transformer crash predictor, Sentinel-2 hazards (flooding, sand, roadside canals) compared against the same road a year earlier, and YOLOv8 pavement defects.","<b>أربع إشارات خطورة مستقلة:</b> فيزياء هندسة الطريق وفق AASHTO، ونموذج Transformer للتنبؤ بالحوادث، ومخاطر من صور Sentinel-2 (غرق، ورمال، وترع جانبية) مقارنة بنفس الطريق قبل عام، وعيوب الرصف بـ YOLOv8."],
 ["Site reports for road authorities: an A4 report in Arabic with English alongside. Treatments come from published crash modification factors (FHWA, AASHTO HSM), costed in EGP ranges and staged from \"this week\" to \"budgeted works\".","<b>تقارير مواقع لجهات الطرق:</b> تقرير A4 بالعربية ومعه الإنجليزية. الحلول مأخوذة من معاملات تعديل الحوادث المنشورة (FHWA و AASHTO HSM)، بتكلفة تقديرية بالجنيه المصري، ومرحلة من «هذا الأسبوع» حتى «أعمال بميزانية»."],
 ["Safer routing: a driving graph built from OpenStreetMap and scored in risk-kilometres over 300 m segments, which trades travel time against exposure to dangerous road.","<b>توجيه أكثر أماناً:</b> شبكة طرق من OpenStreetMap مقيّمة بـ«كيلومترات الخطر» على مقاطع 300 متر، توازن بين وقت الرحلة والتعرض للطرق الخطرة."],
-["Driver warnings designed against alarm fatigue: the app stays silent unless the warning changes what the driver should do. When it speaks, it is 250 m before the curve, counting down, with the measured road ahead drawn on the phone from an offline pack, no map tiles.","<b>تحذيرات للسائق مصممة ضد إرهاق التنبيهات:</b> التطبيق يصمت إلا إذا كان التحذير سيغيّر ما يجب على السائق فعله. وعندما يتكلم يكون ذلك قبل المنحنى بـ 250 متراً مع عدّ تنازلي، والطريق المقاس أمامه مرسوم على الهاتف من حزمة تعمل بدون إنترنت، بلا خرائط جاهزة."],
-["Egypt's main roads, measured: 14 intercity roads found by the names on the map, 6,026 km of carriageway cut into 20,161 stretches. 785 of them have a speed limit above what their geometry holds; 227 of those limits are on a mapped sign.","<b>الطرق الرئيسية في مصر، مقاسة:</b> 14 طريقاً بين المدن بأسمائها على الخريطة، و6,026 كم من الاتجاهات مقسمة إلى 20,161 مقطعاً. منها 785 مقطعاً حدّ السرعة فيها أعلى مما تتحمله هندستها، و227 من هذه الحدود على لافتة مسجلة في الخريطة."],
-["Audited before launch: 61 checks run against the live server, not the code alone. Fixed a hardcoded default password, a forged-header bypass of the rate limits and unsandboxed uploads; added an audit trail of admin actions. 616 automated tests.","<b>مراجعة قبل الإطلاق:</b> 61 فحصاً على الخادم وهو يعمل، لا على الكود وحده. أصلحت كلمة مرور افتراضية مكتوبة في الكود، وتجاوزاً لحدود الطلبات بعنوان مزيّف، ورفع ملفات غير معزول، وأضفت سجلاً لكل إجراءات المدير. 616 اختباراً آلياً."],
-["Egypt's main roads measured","الطرق الرئيسية في مصر المقاسة"],["6,026 km · 20,161 stretches 785 with a limit above what they hold · 227 on a mapped sign","6,026 كم · 20,161 مقطعاً<small>785 منها حدّ سرعتها أعلى مما تتحمله هندستها · 227 على لافتة مسجلة</small>"],
-["Spoken warning + road-ahead view, offline","تحذير صوتي + الطريق أمامك، بدون إنترنت"],["6,026 km of Egyptian roads, measured","6,026 كم من الطرق المصرية، مقاسة"],["How it fits together","كيف تترابط الأجزاء"],
-["In the car: a spoken warning counts down to a 196 m curve on the Regional Ring Road, with the measured road ahead drawn on the phone. No map tiles, so it works with no signal.","في السيارة: تحذير صوتي بعدّ تنازلي قبل منحنى نصف قطره 196 متراً على الطريق الدائري الإقليمي، والطريق المقاس أمامك مرسوم على الهاتف. بلا خرائط جاهزة، فيعمل بدون شبكة."],
-["Egypt's main roads measured every 300 m: 14 intercity roads, 6,026 km of carriageway, 20,161 stretches. White dots: the 785 stretches whose speed limit is above what their geometry holds, 227 of them on a mapped sign.","الطرق الرئيسية في مصر مقاسة كل 300 متر: 14 طريقاً، و6,026 كم من الاتجاهات، و20,161 مقطعاً. النقاط البيضاء: الـ 785 مقطعاً التي حدّ سرعتها أعلى مما تتحمله هندستها، منها 227 على لافتة مسجلة في الخريطة."],
-["System diagram: open data in, every road cut into 300 m stretches and measured, and who each output is for.","مخطط النظام: بيانات مفتوحة تدخل، وكل طريق يُقسم إلى مقاطع 300 متر ويُقاس، ولمن تذهب كل نتيجة."],
+["Driver warnings designed against alarm fatigue: the app stays silent unless the warning changes what the driver should do. All of Cairo comes down to 13 warnings from 1,055 measured segments, in a 5 kB pack that works offline.","<b>تحذيرات للسائق مصممة ضد إرهاق التنبيهات:</b> التطبيق يصمت إلا إذا كان التحذير سيغيّر ما يجب على السائق فعله. القاهرة كلها تتلخص في 13 تحذيراً من 1,055 مقطعاً مقاساً، في حزمة 5 kB تعمل بدون إنترنت."],
 ["No fake confidence: a model that can't run contributes nothing rather than a placeholder 0.5, and every response lists the models that ran.","<b>بدون ثقة مزيفة:</b> النموذج الذي لا يستطيع العمل لا يساهم بشيء بدلاً من قيمة 0.5 وهمية، وكل استجابة تذكر النماذج التي عملت."],
 ["Crash predictor, 47 held-out locations","التنبؤ بالحوادث، 47 موقعاً لم يرها النموذج"],
 ["Cairo Ring Road segmentation","تقسيم الطريق الدائري بالقاهرة"],["635 segments in ~11 s 381 OSM ways · 189 km","635 مقطعاً في ~11 ث<small>381 طريق OSM · 189 كم</small>"],
 ["Safer vs fastest route, Ring Road","المسار الأأمن مقابل الأسرع، الطريق الدائري"],["6.61 vs 7.21 risk-km 25.0 vs 26.2 km · +24 s travel time","6.61 مقابل 7.21 كم-خطر<small>25.0 مقابل 26.2 كم · +24 ث في زمن الرحلة</small>"],
 ["Sites above action threshold","مواقع تتجاوز حد التدخل"],["22 sites signs + limit fixes for all: EGP 434k–1,074k","22 موقعاً<small>لافتات وتصحيح حدود السرعة لها كلها: 434 ألف – 1.074 مليون جنيه</small>"],
 ["Known limits & next step","حدود معروفة والخطوة التالية"],
-["The risk model is trained on US crash data. Crash reports and drafting from Egyptian news are built to check it locally; the verdict stays \"insufficient\" until 30 reviewed Egyptian crashes exist.","نموذج الخطورة مدرّب على بيانات حوادث أمريكية. بلاغات الحوادث واستخراجها من الأخبار المصرية جاهزة للتحقق منه محلياً، والحكم يبقى «غير كافٍ» حتى تتوفر 30 حادثة مصرية مراجَعة."],
+["The risk model is trained on US crash data. Egyptian crash locations are next, to validate it locally.","نموذج الخطورة مدرّب على بيانات حوادث أمريكية. الخطوة التالية مواقع حوادث مصرية للتحقق منه محلياً."],
 ["The pavement detector is at mAP50 0.136 and needs retraining on Egyptian imagery.","كاشف عيوب الرصف عند mAP50 0.136 ويحتاج إعادة تدريب على صور مصرية."],
 ["v3 in progress","v3 قيد التطوير"],
 ["Real-time crowd analytics for CCTV, webcams, RTSP cameras and phones: people counting, doorway entry/exit, zone occupancy, heatmaps and anomaly clips. v2 is my rebuild of v1 after I audited it line by line.","تحليل حشود لحظي لكاميرات المراقبة والويب كام و RTSP والموبايل: عدّ الأشخاص، والدخول والخروج من الأبواب، وإشغال المناطق، وخرائط حرارية، ومقاطع للأحداث غير الطبيعية. النسخة الثانية هي إعادة بنائي للأولى بعد مراجعتها سطراً بسطر."],
@@ -889,6 +879,19 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["The AgliFly prototype, built for the graduation project.","نموذج AgliFly الذي بنيته لمشروع التخرج."],
 ["From above: the four motors and speed controllers on the arms, and the electronics board mounted at the centre of the frame.","من أعلى: المحركات الأربعة ومنظمات السرعة على الأذرع، ولوحة الإلكترونيات مثبتة في منتصف الهيكل."],
 ["Motors, speed controllers and the on-board electronics","المحركات ومنظمات السرعة والإلكترونيات على متنها"],
+["Download CV ↓","تحميل السيرة الذاتية ↓"],["CV","السيرة الذاتية"],
+["B.Sc. CS, Artificial Intelligence Pharos University, 2025","بكالوريوس علوم الحاسب، الذكاء الاصطناعي<br>جامعة فاروس، 2025"],
+["Jun 2026 – now","يونيو 2026 – الآن"],["Jul – Sep 2026","يوليو – سبتمبر 2026"],["May – Sep 2026","مايو – سبتمبر 2026"],["Sep 2025","سبتمبر 2025"],["2023 – 2024","2023 – 2024"],
+["R&D Engineer, ST Smart Technology","مهندس بحث وتطوير، ST Smart Technology"],
+["Alexandria. Built the training curriculum from scratch and teach university students, graduates and industry audiences in cohorts of up to 25. Mentor student teams building applied engineering projects for competitions.","الإسكندرية. صممت منهج التدريب من الصفر، وأدرّس لطلاب الجامعة والخريجين والمتخصصين في مجموعات حتى 25 شخصاً، وأوجّه فرق الطلاب في مشاريع هندسية تطبيقية للمسابقات."],
+["Client project: ERP for MGICO Contracting","مشروع لعميل: نظام ERP لشركة MGICO للمقاولات"],
+["Designed, built and delivered the piling contractor's operations system end to end. It now runs their daily operations.","صممت وبنيت وسلّمت نظام التشغيل لشركة الخوازيق بالكامل، والشركة تدير به عملها اليومي الآن."],
+["Robotics & AI Instructor (part-time), Genio Tech Robotics","مدرّب روبوتات وذكاء اصطناعي (دوام جزئي)، Genio Tech Robotics"],
+["Taught an Arduino and robotics curriculum, including a four-session PCB design course, and mentored 20+ students.","درّست منهج Arduino وروبوتات، منه كورس تصميم PCB من أربع محاضرات، ووجّهت أكثر من 20 طالباً."],
+["B.Sc. Computer Science, Artificial Intelligence, Pharos University in Alexandria","بكالوريوس علوم الحاسب، الذكاء الاصطناعي، جامعة فاروس بالإسكندرية"],
+["Core Team Member, Robotics & AI, GDSC Pharos University","عضو الفريق الأساسي، الروبوتات والذكاء الاصطناعي، GDSC جامعة فاروس"],
+["Delivered 8 technical workshops to 100+ students on machine learning, computer vision and robotics.","قدّمت 8 ورش تقنية لأكثر من 100 طالب في تعلّم الآلة والرؤية الحاسوبية والروبوتات."],
+["Diffusion models","نماذج الانتشار (Diffusion)"],
 ["Production planning calculator: rig, pile type, soil, diameter and depth give expected, best and worst-case duration and concrete volume, from the company's recorded production rates.","حاسبة تخطيط الإنتاج: نوع المعدة ونوع الخازوق والتربة والقطر والعمق تعطي المدة المتوقعة وأفضل وأسوأ حالة وحجم الخرسانة، من معدلات الإنتاج المسجلة للشركة."],
 ["The same calculator in the dark theme. Light, dark and system themes throughout.","نفس الحاسبة في الوضع الغامق. وضع فاتح وغامق وتلقائي في النظام كله."],
 ["SafeRoute AI dashboard: English/Arabic, one HTML file served by the API, with live model status.","لوحة SafeRoute AI: عربي وإنجليزي، ملف HTML واحد يقدمه الـ API، مع حالة النماذج المباشرة."],
