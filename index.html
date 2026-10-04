@@ -334,7 +334,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       <div class="index">
         <a class="tile wide" href="#ops">
           <div class="thumb"><img src="img/ops-site-cost.png" alt="" loading="lazy"></div>
-          <div class="body"><span class="eyebrow">Flagship · full-stack · in daily use</span><h3>Piling Operations Platform</h3><p>An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.</p><span class="meta">FastAPI · PostgreSQL</span></div>
+          <div class="body"><span class="eyebrow">Flagship · full-stack · client project</span><h3>MGICO ERP System</h3><p>An ERP that MGICO, a piling contractor, commissioned from me: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.</p><span class="meta">FastAPI · PostgreSQL</span></div>
         </a>
         <a class="tile wide" href="#saferoute">
           <div class="thumb"><img src="img/saferoute-map.png" alt="" loading="lazy"></div>
@@ -359,14 +359,14 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
     <article class="case" id="ops">
       <div class="case-head">
         <div>
-          <div class="chips"><span class="chip">Full-stack · construction</span><span class="chip amber">Client work · in daily use</span></div>
-          <h3>Piling Operations Platform</h3>
-          <p class="summary">An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.</p>
+          <div class="chips"><span class="chip">Full-stack · construction</span><span class="chip amber">Client work · delivered</span></div>
+          <h3>MGICO ERP System</h3>
+          <p class="summary">A real client project, not a personal one. MGICO, a piling and foundations contracting company, commissioned its internal ERP from me, and I designed, built and delivered it end to end; rollout inside the company is in progress. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.</p>
         </div>
         <dl class="spec">
           <dt>Role</dt><dd>Sole engineer: schema, API, UI, tests</dd>
           <dt>Stack</dt><dd>FastAPI, PostgreSQL, Python, pytest, RTL web UI</dd>
-          <dt>Code</dt><dd>Private. Screenshots use test data, with project names blurred.</dd>
+          <dt>Code</dt><dd>Private: the code belongs to MGICO. Figures in the screenshots are blurred. <a href="https://github.com/YoussefKabbary/mgico-showcase" target="_blank" rel="noopener">Overview ↗</a></dd>
         </dl>
       </div>
 
@@ -401,6 +401,38 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
               <tr><th>Automated tests</th><td>424</td></tr>
             </table>
           </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RTL ADMIN STARTER -->
+    <article class="case" id="rtl-starter">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">Template · public code</span></div>
+          <h3>rtl-admin-starter</h3>
+          <p class="summary">A small starter for Arabic, right-to-left admin dashboards on FastAPI. It collects the patterns from the MGICO work into public code, written from scratch with demo data. It is a separate project and shares no code or data with the MGICO ERP.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>Author</dd>
+          <dt>Stack</dt><dd>FastAPI, SQLite, vanilla JS, CSS, pytest</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/rtl-admin-starter" target="_blank" rel="noopener">github.com/YoussefKabbary/rtl-admin-starter ↗</a></dd>
+        </dl>
+      </div>
+
+      <div class="gallery two">
+        <figure><button type="button" data-full="img/rtl-desktop.png" data-cap="Desktop: server-side search and pagination over an inventory table, right-to-left from the root."><img src="img/rtl-desktop.png" alt="Inventory table on desktop, Arabic right-to-left" loading="lazy"></button><figcaption>Desktop: search and pagination</figcaption></figure>
+        <figure><button type="button" data-full="img/rtl-mobile.png" data-cap="Phone: the same markup rendered as labelled cards by CSS alone."><img src="img/rtl-mobile.png" alt="The same table on a phone, shown as cards" loading="lazy"></button><figcaption>Phone: the table becomes cards</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What is inside</h4>
+          <ul class="points">
+            <li><b>RTL at the root:</b> dir on the html element, logical CSS properties, and bidi isolation for Latin text inside Arabic.</li>
+            <li><b>Closed by default:</b> one gate authenticates every route, and a test calls every route without a token and expects 401.</li>
+            <li><b>Readable outdoors:</b> light, dark and a high-contrast sun mode with large touch targets.</li>
+          </ul>
         </div>
       </div>
     </article>
@@ -643,7 +675,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
           <div class="sec-head"><div><span class="eyebrow">Experience</span><h2>Path so far</h2></div></div>
           <ol class="timeline">
             <li><span class="when">Jun 2026 – now</span><div><b>R&amp;D Engineer, ST Smart Technology</b><p>Alexandria. Built the training curriculum from scratch and teach university students, graduates and industry audiences in cohorts of up to 25. Mentor student teams building applied engineering projects for competitions.</p></div></li>
-            <li><span class="when">Jul – Sep 2026</span><div><b>Client project: ERP for MGICO Contracting</b><p>Designed, built and delivered the piling contractor's operations system end to end. It now runs their daily operations.</p></div></li>
+            <li><span class="when">Jul – Sep 2026</span><div><b>Client project: ERP for MGICO Contracting</b><p>Designed, built and delivered the piling contractor's operations system end to end. Rollout inside the company is in progress.</p></div></li>
             <li><span class="when">May – Sep 2026</span><div><b>Robotics &amp; AI Instructor (part-time), Genio Tech Robotics</b><p>Taught an Arduino and robotics curriculum, including a four-session PCB design course, and mentored 20+ students.</p></div></li>
             <li><span class="when">Sep 2025</span><div><b>B.Sc. Computer Science, Artificial Intelligence, Pharos University in Alexandria</b><p>Graduation project AgliFly (on-board CNN surveillance drone) graded Excellent.</p></div></li>
             <li><span class="when">2023 – 2024</span><div><b>Core Team Member, Robotics &amp; AI, GDSC Pharos University</b><p>Delivered 8 technical workshops to 100+ students on machine learning, computer vision and robotics.</p></div></li>
@@ -820,9 +852,9 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["43 PostgreSQL tables","43 جدول PostgreSQL"],
 ["Selected work","أبرز الأعمال"],["Five systems, end to end","خمسة أنظمة، من الفكرة حتى التشغيل"],
 ["Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.","رؤية حاسوبية، وتعلّم آلي على بيانات جغرافية، وأنظمة Backend إنتاجية، وعتاد مدمج. كل رقم مذكور معه ما قيس عليه."],
-["Flagship · full-stack · in daily use","المشروع الرئيسي · Full-stack · مستخدم يومياً"],
-["Piling Operations Platform","منصة تشغيل شركة خوازيق"],
-["An operations system for a piling contractor: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.","نظام تشغيل لشركة مقاولات خوازيق: سجلات المواقع، والتسعير، والتخطيط، والموارد البشرية، والمالية. 141 مسار API، و43 جدولاً، و424 اختباراً، بواجهة عربية."],
+["Flagship · full-stack · client project","المشروع الرئيسي · Full-stack · مشروع لعميل"],
+["MGICO ERP System","نظام ERP لشركة MGICO"],
+["An ERP that MGICO, a piling contractor, commissioned from me: site records, estimating, planning, HR and finance. 141 API routes, 43 tables, 424 tests, Arabic RTL.","نظام ERP طلبته مني شركة MGICO للخوازيق: سجلات المواقع، والتسعير، والتخطيط، والموارد البشرية، والمالية. 141 مسار API، و43 جدول، و424 اختبار، وواجهة عربية."],
 ["Road safety AI","ذكاء اصطناعي للسلامة على الطرق"],
 ["Scores road danger from four independent signals and turns it into action for authorities, routing and drivers.","يقيّم خطورة الطرق من أربع إشارات مستقلة ويحوّلها إلى إجراءات لجهات الطرق والتوجيه والسائقين."],
 ["Real-time computer vision","رؤية حاسوبية لحظية"],
@@ -831,11 +863,21 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["Arduino firmware and two desktop apps over USB and Bluetooth.","برنامج Arduino وتطبيقان لسطح المكتب عبر USB و Bluetooth."],
 ["Graduation project · Excellent","مشروع التخرج · امتياز"],
 ["Autonomous surveillance drone with on-board CNN detection.","طائرة مسيّرة ذاتية للمراقبة تكتشف الأجسام بشبكة CNN على متنها."],
-["Full-stack · construction","Full-stack · مقاولات"],["Client work · in daily use","مشروع لعميل · مستخدم يومياً"],
-["An internal operations system I built end to end for a piling and foundations contractor. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.","نظام تشغيل داخلي بنيته بالكامل لشركة مقاولات خوازيق وأساسات. يغطي سجلات المواقع، وتقدير التكلفة، وتخطيط الإنتاج، والموارد البشرية، وسجل تدقيق كامل، بواجهة عربية مصممة للاستخدام في الموقع."],
+["Template · public code","قالب · كود منشور"],
+["A small starter for Arabic, right-to-left admin dashboards on FastAPI. It collects the patterns from the MGICO work into public code, written from scratch with demo data. It is a separate project and shares no code or data with the MGICO ERP.","قالب صغير للوحات تحكم عربية من اليمين لليسار على FastAPI. بيجمع الأنماط اللي اتعلمتها في شغل MGICO في كود منشور، مكتوب من الصفر ببيانات تجريبية. مشروع منفصل، ومفيهوش أي كود أو بيانات من نظام MGICO."],
+["Author","المؤلف"],["FastAPI, SQLite, vanilla JS, CSS, pytest","FastAPI، وSQLite، وJavaScript، وCSS، وpytest"],
+["Desktop: search and pagination","الكمبيوتر: بحث وتقسيم صفحات"],["Phone: the table becomes cards","الموبايل: الجدول بيتحوّل لكروت"],
+["Desktop: server-side search and pagination over an inventory table, right-to-left from the root.","الكمبيوتر: بحث وتقسيم صفحات من السيرفر على جدول مخزن، واتجاه من اليمين لليسار من الأساس."],
+["Phone: the same markup rendered as labelled cards by CSS alone.","الموبايل: نفس الصفحة بتظهر ككروت بعناوين، بـ CSS بس."],
+["What is inside","فيه إيه"],
+["RTL at the root: dir on the html element, logical CSS properties, and bidi isolation for Latin text inside Arabic.","الاتجاه من الأساس: dir على عنصر html، وخصائص CSS منطقية، وعزل النص الإنجليزي جوه الجمل العربية."],
+["Closed by default: one gate authenticates every route, and a test calls every route without a token and expects 401.","مقفول افتراضيًا: بوابة واحدة بتتحقق من كل المسارات، واختبار بينادي كل مسار من غير تسجيل دخول ومستني 401."],
+["Readable outdoors: light, dark and a high-contrast sun mode with large touch targets.","مقروء في الشمس: وضع فاتح وغامق ووضع تباين عالي، وأزرار كبيرة للمس."],
+["Full-stack · construction","Full-stack · مقاولات"],["Client work · delivered","مشروع لعميل · اتسلّم"],
+["A real client project, not a personal one. MGICO, a piling and foundations contracting company, commissioned its internal ERP from me, and I designed, built and delivered it end to end; rollout inside the company is in progress. It covers site records, cost estimation, production planning, HR and a full audit trail, behind an Arabic right-to-left interface built for use on site.","مشروع حقيقي لعميل، مش مشروع شخصي. شركة MGICO للخوازيق والأساسات طلبت مني نظام ERP داخلي، وأنا صمّمته وبنيته وسلّمته من أوله لآخره، وتشغيله جوه الشركة جاري. بيغطي سجلات المواقع، وتسعير التكلفة، وتخطيط الإنتاج، والموارد البشرية، وسجل كامل للتغييرات، بواجهة عربية من اليمين لليسار معمولة للاستخدام في الموقع."],
 ["Role","الدور"],["Stack","التقنيات"],["Code","الكود"],["Where","المكان"],
 ["Sole engineer: schema, API, UI, tests","المهندس الوحيد: قاعدة البيانات، والـ API، والواجهة، والاختبارات"],
-["Private. Screenshots use test data, with project names blurred.","خاص. الصور ببيانات تجريبية، مع إخفاء أسماء المشاريع."],
+["Private: the code belongs to MGICO. Figures in the screenshots are blurred. Overview ↗","خاص: الكود ملك شركة MGICO. الأرقام في الصور عليها تمويه. <a href=\"https://github.com/YoussefKabbary/mgico-showcase\" target=\"_blank\" rel=\"noopener\">نظرة عامة ↗</a>"],
 ["Production planning from recorded production rates","تخطيط الإنتاج من معدلات الإنتاج المسجلة"],
 ["Light, dark and system themes","وضع فاتح وغامق وتلقائي"],
 ["What I built","ما بنيته"],["Results","النتائج"],["Scale","الحجم"],["Hardware","العتاد"],
@@ -932,7 +974,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["R&D Engineer, ST Smart Technology","مهندس بحث وتطوير، ST Smart Technology"],
 ["Alexandria. Built the training curriculum from scratch and teach university students, graduates and industry audiences in cohorts of up to 25. Mentor student teams building applied engineering projects for competitions.","الإسكندرية. صممت منهج التدريب من الصفر، وأدرّس لطلاب الجامعة والخريجين والمتخصصين في مجموعات حتى 25 شخصاً، وأوجّه فرق الطلاب في مشاريع هندسية تطبيقية للمسابقات."],
 ["Client project: ERP for MGICO Contracting","مشروع لعميل: نظام ERP لشركة MGICO للمقاولات"],
-["Designed, built and delivered the piling contractor's operations system end to end. It now runs their daily operations.","صممت وبنيت وسلّمت نظام التشغيل لشركة الخوازيق بالكامل، والشركة تدير به عملها اليومي الآن."],
+["Designed, built and delivered the piling contractor's operations system end to end. Rollout inside the company is in progress.","صمّمت وبنيت وسلّمت نظام التشغيل لشركة الخوازيق من أوله لآخره، وتشغيله جوه الشركة جاري."],
 ["Robotics & AI Instructor (part-time), Genio Tech Robotics","مدرّب روبوتات وذكاء اصطناعي (دوام جزئي)، Genio Tech Robotics"],
 ["Taught an Arduino and robotics curriculum, including a four-session PCB design course, and mentored 20+ students.","درّست منهج Arduino وروبوتات، منه كورس تصميم PCB من أربع محاضرات، ووجّهت أكثر من 20 طالباً."],
 ["B.Sc. Computer Science, Artificial Intelligence, Pharos University in Alexandria","بكالوريوس علوم الحاسب، الذكاء الاصطناعي، جامعة فاروس بالإسكندرية"],
