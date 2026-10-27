@@ -328,7 +328,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
     <!-- WORK INDEX -->
     <section class="section" id="work">
       <div class="sec-head">
-        <div><span class="eyebrow">Selected work</span><h2>Five systems, end to end</h2></div>
+        <div><span class="eyebrow">Selected work</span><h2>Six systems, end to end</h2></div>
         <p>Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.</p>
       </div>
       <div class="index">
@@ -348,7 +348,11 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
           <div class="thumb"><img src="img/apps-side-by-side.png" alt="" loading="lazy"></div>
           <div class="body"><span class="eyebrow">Embedded + desktop</span><h3>Smart Aquarium</h3><p>Arduino firmware and two desktop apps over USB and Bluetooth.</p><span class="meta">Arduino · Python · Tkinter</span></div>
         </a>
-        <a class="tile" href="#agli">
+        <a class="tile wide" href="#bolt">
+          <div class="thumb"><img src="img/bolt-home.png" alt="" loading="lazy"></div>
+          <div class="body"><span class="eyebrow">R&amp;D tool · embedded + desktop</span><h3>Bolt Control</h3><p>One Windows app that drives the club's robots: a car, Otto, voice commands, LEDs and a serial terminal.</p><span class="meta">Python · Tkinter · Arduino · Bluetooth</span></div>
+        </a>
+        <a class="tile wide" href="#agli">
           <div class="thumb" id="agli-thumb"><img src="img/aglifly-drone.jpg" alt="" loading="lazy"></div>
           <div class="body"><span class="eyebrow">Graduation project · Excellent</span><h3>AgliFly</h3><p>Autonomous surveillance drone with on-board CNN detection.</p><span class="meta">Raspberry Pi · CNN · OpenCV</span></div>
         </a>
@@ -603,6 +607,57 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
       </div>
     </article>
 
+    <!-- BOLT CONTROL -->
+    <article class="case" id="bolt">
+      <div class="case-head">
+        <div>
+          <div class="chips"><span class="chip">R&amp;D tool</span><span class="chip">Embedded + desktop</span></div>
+          <h3>Bolt Control</h3>
+          <p class="summary">At work I couldn't find a documented PC app for the robots we build and teach with, so I made one for myself and the engineers on my team: six pages in one Windows app, each with its own Arduino sketch, over USB or HC-05 Bluetooth.</p>
+        </div>
+        <dl class="spec">
+          <dt>Role</dt><dd>App, five Arduino sketches, protocol</dd>
+          <dt>Stack</dt><dd>Python, Tkinter, pyserial, Arduino C++, Windows speech</dd>
+          <dt>Code</dt><dd><a href="https://github.com/YoussefKabbary/bolt-control" target="_blank" rel="noopener">github.com/YoussefKabbary/bolt-control ↗</a></dd>
+        </dl>
+      </div>
+
+      <button class="shot" type="button" data-full="img/bolt-car.gif" data-cap="Car page: drive in eight directions, pull the handbrake to drift, lights and horn. The car on screen follows the same rules as the firmware."><img src="img/bolt-car.gif" alt="Car page: the car curves, drifts and honks" loading="lazy"></button>
+      <div class="gallery two">
+        <figure><button type="button" data-full="img/bolt-otto.gif" data-cap="Otto page: the walk from the lecture blocks, with a dial for every servo pin."><img src="img/bolt-otto.gif" alt="Otto walking with live servo dials" loading="lazy"></button><figcaption>Otto: a dial for every servo</figcaption></figure>
+        <figure><button type="button" data-full="img/bolt-rgb.gif" data-cap="RGB page: presets and sliders, sent as a hex color."><img src="img/bolt-rgb.gif" alt="RGB page cycling through colors" loading="lazy"></button><figcaption>RGB: presets and sliders</figcaption></figure>
+      </div>
+      <div class="gallery">
+        <figure><button type="button" data-full="img/bolt-home.png" data-cap="Home: pick a project; each card names the sketch to upload."><img src="img/bolt-home.png" alt="Home screen with six project cards" loading="lazy"></button><figcaption>Home: one card per project</figcaption></figure>
+        <figure><button type="button" data-full="img/bolt-voice.png" data-cap="Voice page: say forward, back, left, right or stop. Works offline."><img src="img/bolt-voice.png" alt="Voice page with the last heard word" loading="lazy"></button><figcaption>Voice: offline, fixed words</figcaption></figure>
+        <figure><button type="button" data-full="img/bolt-terminal.png" data-cap="Terminal page: send anything, see every answer, like the Serial Monitor."><img src="img/bolt-terminal.png" alt="Serial terminal page" loading="lazy"></button><figcaption>Terminal: like the Serial Monitor</figcaption></figure>
+      </div>
+
+      <div class="case-body">
+        <div>
+          <h4>What I built</h4>
+          <ul class="points">
+            <li><b>Six pages, one link:</b> a home screen to pick the project; the USB and Bluetooth panel and the log are shared by every page.</li>
+            <li><b>Same protocol as the phone app:</b> the letters and words match the Bluetooth app used in the lectures, so a phone and the PC drive the same sketch.</li>
+            <li><b>Stops by itself:</b> the car halts if the PC goes quiet for 400 ms, and every page sends a stop when you leave it or disconnect.</li>
+            <li><b>Voice without the internet:</b> the speech recognizer built into Windows listens for a fixed word list only; anything under 60% confidence is shown, not sent.</li>
+            <li><b>Practice mode:</b> every page works with no board connected, and the drawing follows the firmware's own rules.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Results</h4>
+          <div class="results">
+            <table>
+              <tr><th>Pages</th><td>6<small>car · Otto · voice · LED · RGB · terminal</small></td></tr>
+              <tr><th>Arduino sketches</th><td>5<small>compile with no warnings on Uno and Nano</small></td></tr>
+              <tr><th>Automated checks</th><td>111<small>against a fake serial port</small></td></tr>
+              <tr><th>Voice test</th><td>95–99%<small>confidence on synthesized speech</small></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <!-- AGLIFLY -->
     <article class="case" id="agli">
       <div class="case-head">
@@ -850,7 +905,7 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["real fatal-crash records used to train a road-risk Transformer","سجل حقيقي لحوادث مميتة لتدريب نموذج Transformer لتقييم خطورة الطرق"],
 ["automated tests behind a 141-route production API","اختباراً آلياً خلف API إنتاجي من 141 مساراً"],
 ["43 PostgreSQL tables","43 جدول PostgreSQL"],
-["Selected work","أبرز الأعمال"],["Five systems, end to end","خمسة أنظمة، من الفكرة حتى التشغيل"],
+["Selected work","أبرز الأعمال"],["Six systems, end to end","ستة أنظمة، من الفكرة حتى التشغيل"],
 ["Computer vision, geospatial ML, production backends and embedded hardware. Every figure names what it was measured on.","رؤية حاسوبية، وتعلّم آلي على بيانات جغرافية، وأنظمة Backend إنتاجية، وعتاد مدمج. كل رقم مذكور معه ما قيس عليه."],
 ["Flagship · full-stack · client project","المشروع الرئيسي · Full-stack · مشروع لعميل"],
 ["MGICO ERP System","نظام ERP لشركة MGICO"],
@@ -993,7 +1048,38 @@ footer{padding-block:28px 44px;font-size:13px;color:var(--ink-3);display:flex;ju
 ["v1 settings (left) and v2 settings (right) on the same frames. Both run the same fixed code; only the model and inference resolution differ.","إعدادات v1 (يسار) و v2 (يمين) على نفس الإطارات. الاثنان يشغّلان نفس الكود المصحَّح، والفرق فقط في النموذج ودقة الاستدلال."],
 ["Same firmware, same commands, two front ends: the standard control panel and the animated kids edition.","نفس البرنامج الثابت ونفس الأوامر، وواجهتان: لوحة التحكم العادية ونسخة الأطفال المتحركة."],
 ["System architecture: sensors and actuators on the Arduino Nano, the one-character protocol, and both desktop apps.","معمارية النظام: الحساسات والمحركات على Arduino Nano، وبروتوكول الحرف الواحد، والتطبيقان."],
-["Kids edition: an animated tank where the fish react to live water quality from the turbidity sensor.","نسخة الأطفال: حوض متحرك تتفاعل فيه الأسماك مع جودة المياه اللحظية من حساس العكارة."]
+["Kids edition: an animated tank where the fish react to live water quality from the turbidity sensor.","نسخة الأطفال: حوض متحرك تتفاعل فيه الأسماك مع جودة المياه اللحظية من حساس العكارة."],
+["R&D tool · embedded + desktop", "أداة بحث وتطوير · أنظمة مدمجة + سطح المكتب"],
+["Bolt Control", "Bolt Control"],
+["One Windows app that drives the club's robots: a car, Otto, voice commands, LEDs and a serial terminal.", "تطبيق ويندوز واحد يتحكم في روبوتات النادي: عربية، وOtto، وأوامر صوتية، وLED، وSerial Terminal."],
+["R&D tool", "أداة بحث وتطوير"],
+["At work I couldn't find a documented PC app for the robots we build and teach with, so I made one for myself and the engineers on my team: six pages in one Windows app, each with its own Arduino sketch, over USB or HC-05 Bluetooth.", "في الشغل مالقيتش تطبيق كمبيوتر موثّق للروبوتات اللي بنبنيها وبندرّس بيها، فعملت واحد ليّا وللمهندسين اللي معايا: ست صفحات في تطبيق ويندوز واحد، لكل صفحة كود Arduino خاص بيها، عبر USB أو Bluetooth HC-05."],
+["App, five Arduino sketches, protocol", "التطبيق، وخمسة أكواد Arduino، والبروتوكول"],
+["Python, Tkinter, pyserial, Arduino C++, Windows speech", "Python، Tkinter، pyserial، Arduino C++، التعرف على الصوت في ويندوز"],
+["Car page: drive in eight directions, pull the handbrake to drift, lights and horn. The car on screen follows the same rules as the firmware.", "صفحة العربية: قيادة في ثمانية اتجاهات، وهاند بريك للدرفت، ونور وكلاكس. العربية على الشاشة ماشية بنفس قواعد البرنامج الثابت."],
+["Otto page: the walk from the lecture blocks, with a dial for every servo pin.", "صفحة Otto: المشية من بلوكات المحاضرة، مع مؤشر لكل سيرفو."],
+["Otto: a dial for every servo", "Otto: مؤشر لكل سيرفو"],
+["RGB page: presets and sliders, sent as a hex color.", "صفحة RGB: ألوان جاهزة وسلايدرات، بتتبعت كلون hex."],
+["RGB: presets and sliders", "RGB: ألوان جاهزة وسلايدرات"],
+["Home: pick a project; each card names the sketch to upload.", "الرئيسية: اختار المشروع، وكل كارت مكتوب عليه الكود اللي هترفعه."],
+["Home: one card per project", "الرئيسية: كارت لكل مشروع"],
+["Voice page: say forward, back, left, right or stop. Works offline.", "صفحة الصوت: قول forward أو back أو left أو right أو stop. بتشتغل من غير إنترنت."],
+["Voice: offline, fixed words", "الصوت: من غير إنترنت، بكلمات محددة"],
+["Terminal page: send anything, see every answer, like the Serial Monitor.", "صفحة الـ Terminal: ابعت أي حاجة وشوف كل الردود، زي الـ Serial Monitor."],
+["Terminal: like the Serial Monitor", "Terminal: زي الـ Serial Monitor"],
+["Six pages, one link: a home screen to pick the project; the USB and Bluetooth panel and the log are shared by every page.", "<b>ست صفحات واتصال واحد:</b> شاشة رئيسية تختار منها المشروع، ولوحة USB وBluetooth والسجل مشتركين بين كل الصفحات."],
+["Same protocol as the phone app: the letters and words match the Bluetooth app used in the lectures, so a phone and the PC drive the same sketch.", "<b>نفس بروتوكول تطبيق الموبايل:</b> الحروف والكلمات زي تطبيق البلوتوث اللي بنستخدمه في المحاضرات، فالموبايل والكمبيوتر بيتحكموا في نفس الكود."],
+["Stops by itself: the car halts if the PC goes quiet for 400 ms, and every page sends a stop when you leave it or disconnect.", "<b>بيقف لوحده:</b> العربية بتقف لو الكمبيوتر سكت 400 ms، وكل صفحة بتبعت أمر وقوف لما تخرج منها أو تقطع الاتصال."],
+["Voice without the internet: the speech recognizer built into Windows listens for a fixed word list only; anything under 60% confidence is shown, not sent.", "<b>صوت من غير إنترنت:</b> محرك التعرف على الصوت اللي جوه ويندوز بيسمع لكلمات محددة بس، وأي كلمة ثقتها أقل من 60% بتظهر من غير ما تتبعت."],
+["Practice mode: every page works with no board connected, and the drawing follows the firmware's own rules.", "<b>وضع التدريب:</b> كل صفحة بتشتغل من غير ما توصّل بوردة، والرسمة ماشية بنفس قواعد البرنامج الثابت."],
+["Pages", "الصفحات"],
+["6car · Otto · voice · LED · RGB · terminal", "6<small>عربية · Otto · صوت · LED · RGB · terminal</small>"],
+["Arduino sketches", "أكواد Arduino"],
+["5compile with no warnings on Uno and Nano", "5<small>بتتعمل compile من غير أي warning على Uno وNano</small>"],
+["Automated checks", "اختبارات آلية"],
+["111against a fake serial port", "111<small>على منفذ serial وهمي</small>"],
+["Voice test", "اختبار الصوت"],
+["95–99%confidence on synthesized speech", "95–99%<small>نسبة ثقة على كلام مُولَّد بالكمبيوتر</small>"]
   ];
   function norm(s){return String(s).replace(/\s+/g,'')}
   var map={},plain={};
